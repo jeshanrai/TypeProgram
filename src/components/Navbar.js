@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
@@ -9,10 +10,16 @@ export default function Navbar() {
 
   return (
     <nav className="navbar-container">
-      <div className="navbar-logo">TypeCode</div>
+     <div className="navbar-logo">
+        <Link to="/">
+          <img src="/images/logo.png" alt="TypeCode Logo" className="logo-img" />
+          <span className="logo-text">TypeCode</span>
+          
+        </Link>
+      </div>
       <div className="navbar-center">
-        <a href="#customize">Customize</a>
-        <a href="#learn">Learn</a>
+        <Link to="/Customize">Customize</Link>
+        <Link to="/Learn">Learn</Link>
       </div>
       <div className="navbar-right">
         <label className="switch">

@@ -3,15 +3,26 @@ import './App.css';
 import LanguageBar from './components/Languagebar';
 import Navbar from './components/Navbar';
 import TypingArea from './components/TypingArea';
+import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
 
 function App() {
   
-const snippet = `for (int i = 0; i < 10; i++) {\n  cout << i << endl;\n}`;
+const snippet = "This is a  test.";
   return (
    <>
     <Navbar></Navbar>
-  <LanguageBar></LanguageBar>
-  <TypingArea snippet={snippet}></TypingArea>
+ <Routes>
+        <Route path="/" element={
+          <>
+            <LanguageBar />
+            <TypingArea snippet={snippet} />
+          </>
+        } />
+        <Route path="/Customize" element={<h1>Customize</h1>} />
+        <Route path="/Learn" element={<h1>Learn</h1>} />
+      </Routes>
+
+  
    </>
   )
 }
