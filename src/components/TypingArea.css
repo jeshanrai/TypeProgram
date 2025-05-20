@@ -1,0 +1,53 @@
+body.light {
+  --container-bg: #f9fafb;
+  --border-color: #e5e7eb;
+  --text-color: #111;
+  --correct-color: green;
+  --incorrect-color: red;
+  --shadow-color: #0a0303;
+}
+
+body.dark {
+  --container-bg: #1e1e1e;
+  --border-color: #2c2c2c;
+  --text-color: #f0f0f0;
+  --correct-color: #9fef9f;
+  --incorrect-color: #ff7a7a;
+    --shadow-color: #f5f5f5;
+}
+
+.typing-container {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 450px;
+  color: var(--text-color);
+  align-items: center;
+  
+}
+
+.snippet-box {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  background-color: var(--container-bg);
+  padding: 20px;
+  height: 450px;
+  width: 100%;
+  border-radius: 8px;
+  min-height: 160px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  box-shadow: 0px 0px 7px var(--shadow-color);
+}
+
+.correct {
+  color: var(--correct-color);
+}
+
+.incorrect {
+  color: var(--incorrect-color);
+}

@@ -1,25 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
+import LanguageBar from './components/Languagebar';
+import Navbar from './components/Navbar';
+import TypingArea from './components/TypingArea';
 
 function App() {
+  
+const snippet = `for (int i = 0; i < 10; i++) {\n  cout << i << endl;\n}`;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   <>
+    <Navbar></Navbar>
+  <LanguageBar></LanguageBar>
+  <TypingArea snippet={snippet}></TypingArea>
+   </>
+  )
 }
 
 export default App;
