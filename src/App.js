@@ -1,30 +1,56 @@
-
 import './App.css';
 import LanguageBar from './components/Languagebar';
 import Navbar from './components/Navbar';
 import TypingArea from './components/TypingArea';
-import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  
-const snippet = "This is a  test.";
+  const [language, setLanguage] = useState('text');
+  const [snippet, setSnippet] = useState('Select a language to start typing.');
+  const [shownIds, setShownIds] = useState([]);
+
+  useEffect(() => {
+    const fetchSnippet = async () => {
+      try {
+        const res = await axios.post('http://localhost:3001/api/snippet', {
+          language,
+          excludeIds: shownIds
+        });
+        setSnippet(res.data.code);
+        setShownIds(prev => [...prev, res.data._id]);
+      } catch (err) {
+        setSnippet('// No more unique snippets available.');
+      }
+    };
+
+    if (language !== 'text') {
+      fetchSnippet();
+    } else {
+      setSnippet('Select a language to start typing.');
+      setShownIds([]);
+    }
+  }, [language]);
+
   return (
-   <>
-    <Navbar></Navbar>
- <Routes>
-        <Route path="/" element={
-          <>
-            <LanguageBar />
-            <TypingArea snippet={snippet} />
-          </>
-        } />
+    <>
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <LanguageBar setLanguage={setLanguage} />
+              <TypingArea snippet={snippet} />
+            </>
+          }
+        />
         <Route path="/Customize" element={<h1>Customize</h1>} />
         <Route path="/Learn" element={<h1>Learn</h1>} />
       </Routes>
-
-  
-   </>
-  )
+    </>
+  );
 }
 
 export default App;
