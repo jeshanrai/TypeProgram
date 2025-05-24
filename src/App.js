@@ -5,6 +5,8 @@ import TypingArea from './components/TypingArea';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import Customize from './pages/Customize';
+import Learn from './pages/Learn';
 
 function App() {
   const [language, setLanguage] = useState('text');
@@ -46,8 +48,9 @@ function App() {
             </>
           }
         />
-        <Route path="/Customize" element={<h1>Customize</h1>} />
-        <Route path="/Learn" element={<h1>Learn</h1>} />
+        <Route path="/customize" element={<Customize />} />
+        <Route path="/learn" element={<Learn />} />
+      
       </Routes>
     </>
   );
