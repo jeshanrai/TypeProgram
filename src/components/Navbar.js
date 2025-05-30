@@ -19,7 +19,7 @@ export default function Navbar() {
       </div>
       <div className="navbar-center">
         <Link to="/customize">Customize</Link>
-        <Link to="/learn">Learn</Link>
+        <Link to="/Play">Play</Link>
       </div>
       <div className="navbar-right">
         <label className="switch">

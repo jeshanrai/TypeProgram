@@ -49,7 +49,7 @@ function App() {
           }
         />
         <Route path="/customize" element={<Customize />} />
-        <Route path="/learn" element={<Learn />} />
+        <Route path="/Play" element={<Play />} />
       
       </Routes>
     </>
