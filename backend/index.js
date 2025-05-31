@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 // Connect to MongoDB
 connectDB();
-const db = getDB(); // ✅ THIS LINE IS REQUIRED
+const db = getDB();
 
 // POST endpoint to fetch a random snippet (excluding used ones)
 app.post('/api/snippet', async (req, res) => {

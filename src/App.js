@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Customize from './pages/Customize';
-import Learn from './pages/Learn';
+import Play from './pages/Play';
 
 function App() {
   const [language, setLanguage] = useState('text');
@@ -49,7 +49,7 @@ function App() {
           }
         />
         <Route path="/customize" element={<Customize />} />
-        <Route path="/Play" element={<Play />} />
+        <Route path="/Play" element={<Play/>} />
       
       </Routes>
     </>
