@@ -1,16 +1,51 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TypingArea.css';
 
-const TypingArea = ({ snippet }) => {
-  const [userInput, setUserInput] = useState('');
+const TypingArea = ({
+  snippet,
+  inputStarted,
+  setInputStarted,
+  timeLeft,
+  setTimeLeft
+}) => {
+
   const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
-  const [timeLimit, setTimeLimit] = useState(0); // in milliseconds
-  const [timeLeft, setTimeLeft] = useState(null);
+  const [endTime, setEndTime] = useState(null); // in milliseconds
+
   const [showWPM, setShowWPM] = useState(false);
   const timerInterval = useRef(null);
 
+  const [timeLimit, setTimeLimit] = useState(30000); // Default 30 seconds
+  const [userInput, setUserInput] = useState('');
   const textareaRef = useRef(null);
+  const timerRef = useRef(null);
+
+  const handleTimerSelect = (ms) => {
+    setTimeLimit(ms);
+    if (inputStarted) {
+      setTimeLeft(ms); // reset timer if already typing
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
+    if (!inputStarted) {
+      setInputStarted(true);
+      setTimeLeft(timeLimit);
+    }
+  };
+
+  useEffect(() => {
+    if (inputStarted && timeLeft > 0) {
+      timerRef.current = setTimeout(() => setTimeLeft(timeLeft - 1000), 1000);
+    } else if (timeLeft === 0) {
+      clearTimeout(timerRef.current);
+      setInputStarted(false); // reset inputStarted to fade LanguageBar back in
+      setEndTime(Date.now());
+      textareaRef.current?.blur();
+    }
+    return () => clearTimeout(timerRef.current);
+  }, [timeLeft, inputStarted, setTimeLeft, setInputStarted]);
 
   useEffect(() => {
     textareaRef.current?.focus();
@@ -29,6 +64,7 @@ const TypingArea = ({ snippet }) => {
                 clearInterval(timerInterval.current);
                 setEndTime(Date.now());
                 textareaRef.current?.blur();
+                setInputStarted(false);
                 return 0;
               }
               return prev - 1000;
@@ -40,19 +76,7 @@ const TypingArea = ({ snippet }) => {
 
     window.addEventListener('keydown', handleFirstKey);
     return () => window.removeEventListener('keydown', handleFirstKey);
-  }, [startTime, timeLimit]);
-
-  const handleInputChange = (e) => {
-    if (timeLimit === 0 || timeLeft > 0) {
-      const value = e.target.value;
-      setUserInput(value);
-
-      if (value === snippet) {
-        setEndTime(Date.now());
-        clearInterval(timerInterval.current);
-      }
-    }
-  };
+  }, [startTime, timeLimit, setInputStarted]);
 
   const handleClick = () => {
     textareaRef.current?.focus();
@@ -84,17 +108,6 @@ const TypingArea = ({ snippet }) => {
     });
   };
 
-  const handleTimerSelect = (ms) => {
-    setTimeLimit(ms);
-    setStartTime(null);
-    setEndTime(null);
-    setUserInput('');
-    setTimeLeft(null);
-    clearInterval(timerInterval.current);
-    textareaRef.current?.focus();
-    setShowWPM(false);
-  };
-
   const handleRetry = () => {
     setUserInput('');
     setStartTime(null);
@@ -102,23 +115,32 @@ const TypingArea = ({ snippet }) => {
     setTimeLeft(null);
     setShowWPM(false);
     clearInterval(timerInterval.current);
+    setInputStarted(false);
     textareaRef.current?.focus();
   };
 
   return (
-    <div className="typing-container" onClick={handleClick}>
-       <div className="timer-selector">
-        {[15000, 30000, 60000, 120000].map((ms) => (
-          <span
-            key={ms}
-            className={`timer-number ${timeLimit === ms ? 'active' : ''}`}
-            onClick={() => handleTimerSelect(ms)}
-          >
-            {ms / 1000}
-          </span>
-        ))}
-      </div>
+    <>
+    <div className="timer-wrapper">
+  <div className={`timer-selector ${inputStarted && timeLeft > 0 ? 'fade-out' : ''}`}>
+    {[15000, 30000, 60000, 120000].map((ms) => (
+      <span
+        key={ms}
+        className={`timer-number ${timeLimit === ms ? 'active' : ''}`}
+        onClick={() => handleTimerSelect(ms)}
+      >
+        {ms / 1000}
+      </span>
+    ))}
+  </div>
 
+  {inputStarted && timeLeft !== null && (
+    <div className="timer-display">Time: {timeLeft / 1000}s</div>
+  )}
+</div>
+
+    <div className="typing-container" onClick={handleClick}>
+    
       <div className="snippet-box" aria-label="typing snippet">
         {renderSnippetWithCursor()}
       </div>
@@ -150,6 +172,7 @@ const TypingArea = ({ snippet }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

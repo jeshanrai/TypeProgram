@@ -12,6 +12,9 @@ function App() {
   const [language, setLanguage] = useState('text');
   const [snippet, setSnippet] = useState('Select a language to start typing.');
   const [shownIds, setShownIds] = useState([]);
+  const [inputStarted, setInputStarted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(null);
+  const [timeLimit, setTimeLimit] = useState(30000); // default 30s
 
   useEffect(() => {
     const fetchSnippet = async () => {
@@ -43,14 +46,24 @@ function App() {
           path="/"
           element={
             <>
-              <LanguageBar setLanguage={setLanguage} />
-              <TypingArea snippet={snippet} />
+              <LanguageBar
+                setLanguage={setLanguage}
+                className={inputStarted && timeLeft > 0 ? 'fade-out' : ''}
+              />
+              <TypingArea
+                snippet={snippet}
+                inputStarted={inputStarted}
+                setInputStarted={setInputStarted}
+                timeLeft={timeLeft}
+                setTimeLeft={setTimeLeft}
+                timeLimit={timeLimit}
+                setTimeLimit={setTimeLimit}
+              />
             </>
           }
         />
         <Route path="/customize" element={<Customize />} />
-        <Route path="/Play" element={<Play/>} />
-      
+        <Route path="/Play" element={<Play />} />
       </Routes>
     </>
   );

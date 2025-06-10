@@ -1,14 +1,14 @@
 import React from 'react';
 
 const languages = [
-    { key: 'javascript', label: 'JavaScript' },
+  { key: 'javascript', label: 'JavaScript' },
   { key: 'cpp', label: 'C++' },
   { key: 'java', label: 'Java' },
   { key: 'python', label: 'Python' },
   { key: 'typescript', label: 'TypeScript' },
   { key: 'css', label: 'CSS' },
   { key: 'html', label: 'HTML' },
-  {key: 'text', label: 'Text'},
+  { key: 'text', label: 'Text' },
   { key: 'csharp', label: 'C#' },
   { key: 'c', label: 'C' },
   { key: 'php', label: 'PHP' },
@@ -19,13 +19,17 @@ const languages = [
   { key: 'sql', label: 'SQL' },
 ];
 
-export default function LanguageBar({ setLanguage }) {
+export default function LanguageBar({ setLanguage, className = '' }) {
   return (
-    <div className="language-bar">
+    <div className={`language-bar ${className}`}>
       {languages.map(lang => (
-        <button key={lang.key} className={`language-item ${
-      lang.label === 'Text' ? 'bg-black text-white' : ''
-    }`} onClick={() => setLanguage(lang.key)}>
+        <button
+          key={lang.key}
+          className={`language-item ${
+            lang.label === 'Text' ? 'bg-black text-white' : ''
+          }`}
+          onClick={() => setLanguage(lang.key)}
+        >
           {lang.label}
         </button>
       ))}

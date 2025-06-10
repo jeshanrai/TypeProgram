@@ -203,3 +203,16 @@ input:checked + .slider:before {
 }
 
 
+.language-bar {
+  transition: opacity 0.4s ease;
+}
+
+.language-bar.fade-out {
+  opacity: 0;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* optional: prevent clicks while faded */
+}
