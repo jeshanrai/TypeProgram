@@ -185,6 +185,7 @@ const renderSnippetWithCursor = () => {
             key={i}
             className={`char-wrapper ${isTyped ? (isCorrect ? 'correct' : 'incorrect') : ''} ${isSpace ? 'space-char' : ''}`}
           >
+            {/* Only render \u00A0 for display, but compare with ' ' */}
             {isSpace ? '\u00A0' : char}
             {i === pos && <span className="cursor" />}
           </span>

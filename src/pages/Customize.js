@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './CustomizePage.css';
-import { FaMusic, FaPlay, FaSave } from 'react-icons/fa';
+import { FaMusic, FaPlay } from 'react-icons/fa';
 
 const defaultSamples = [
   "The quick brown fox jumps over the lazy dog.",
@@ -100,14 +100,11 @@ const CustomizePage = () => {
   // Handle theme change
   const handleThemeChange = (themeName) => {
     setTheme(themeName);
-    // Optionally, apply theme to body or context
   };
 
   // Handle start typing (navigate or pass config to typing page)
   const handleStartTyping = () => {
     const finalSnippet = useDefault ? selectedDefault : snippet;
-    // You can use React Router's useNavigate to go to typing page with state
-    // Or save config to context/global state
     alert(
       `Starting typing test with:\n\nText: ${finalSnippet}\nTimer: ${timer}s\nChar Limit: ${charLimit}\nDifficulty: ${difficulty}\nText Type: ${textType}\nFont: ${fontStyle}\nTheme: ${theme}\nMusic: ${musicEnabled ? 'On' : 'Off'}`
     );
@@ -122,7 +119,6 @@ const CustomizePage = () => {
   return (
     <div className={`customize-wrapper theme-${theme}`}>
       <div className="customize-container">
-        <h2>Customize Your Typing Practice</h2>
         <div className="button-row">
           <button className="start-button" onClick={handleStartTyping}>
             <FaPlay style={{ marginRight: 8 }} /> Start Typing
@@ -149,14 +145,26 @@ const CustomizePage = () => {
             </div>
             {useDefault ? (
               <>
-                <select
-                  className="default-dropdown"
+               <select className="default-dropdown"
                   value={defaultType}
                   onChange={handleDefaultTypeChange}
                 >
-                  <option>Sample Paragraph</option>
-                  <option>Code Snippet</option>
-                  <option>Random Words</option>
+                
+                  <option value="">Text</option>
+                  <option value="">javascript</option>
+                  <option value="">C++</option>
+                  <option value="">Java</option>
+                  <option value="">Python</option>
+                  <option value="">TypeScript</option>
+                  <option value="">CSS</option>
+                  <option value="">HTML</option>
+                  <option value="">C#</option>
+                  <option value="">C</option>
+                  <option value="">PHP</option>
+                  <option value="">Ruby</option>
+                  <option value="">Kotlin</option>
+                  <option value="">Swift</option>
+                   <option value="">SQL</option>
                 </select>
 
                 {defaultType === 'Code Snippet' && (
@@ -179,37 +187,16 @@ const CustomizePage = () => {
                     >
                       {languageSamples.map((sample, idx) => (
                         <option key={idx} value={sample.code}>
-                          {sample.code.length > 40 ? sample.code.slice(0, 40) + '...' : sample.code}
+                          {`Sample ${idx + 1}`}
                         </option>
                       ))}
                     </select>
-                    <textarea
-                      value={selectedDefault}
-                      readOnly
-                      rows="4"
-                      style={{ marginTop: 8 }}
-                    />
+                    {/* Removed preview textarea */}
                   </>
                 )}
                 {defaultType !== 'Code Snippet' && (
                   <>
-                    <select
-                      className="default-dropdown"
-                      value={selectedDefault}
-                      onChange={handleDefaultSampleChange}
-                    >
-                      {defaultOptions.map((sample, idx) => (
-                        <option key={idx} value={sample}>
-                          {sample.length > 40 ? sample.slice(0, 40) + '...' : sample}
-                        </option>
-                      ))}
-                    </select>
-                    <textarea
-                      value={selectedDefault}
-                      readOnly
-                      rows="4"
-                      style={{ marginTop: 8 }}
-                    />
+                    {/* Removed second default dropdown */}
                   </>
                 )}
               </>
@@ -264,7 +251,7 @@ const CustomizePage = () => {
           <div className="customize-section">
             <label>Text Type</label>
             <div className="option-buttons">
-              {['Words', 'Sentences', 'Paragraph'].map(type => (
+              {['Numbers', 'Capital', 'Symbols'].map(type => (
                 <button
                   key={type}
                   className={textType === type ? 'active' : ''}
