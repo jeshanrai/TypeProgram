@@ -6,10 +6,12 @@
   --correct-color: #4caf50;
   --incorrect-color: #f44336;
   --cursor-color:white;
+  --selector-color:f5f5f5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+      --selector-color:#01121d;
     --text-color: #ffffff;
     --container-bg: #1e1e2f;
     --border-color: #444;
@@ -34,7 +36,7 @@
 
 .snippet-box {
   font-family: 'Courier New', monospace;
-  font-size: 2rem;
+  font-size: 2.2rem;
   background-color: var(--container-bg);
   padding: 20px;
   height: 450px;
@@ -45,10 +47,36 @@
   line-height: 1.6;
   border: 1px solid var(--border-color);
   box-shadow: 0px 0px 7px var(--shadow-color);
-  overflow-y: auto;
+  overflow-y: hidden;
   cursor: text;
 }
+/* .snippet-box {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
 
+.snippet-box.fade {
+  opacity: 0;
+  transform: translateY(10px);
+} */
+
+/* .snippet-text {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.snippet-text.fade {
+  opacity: 0;
+  transform: translateY(8px);
+} */
+
+
+.timer-number.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .char-wrapper {
   white-space: pre;
   display: inline-block;
@@ -104,6 +132,7 @@
 .button-row button:hover img {
   transform: scale(1.1);
 }
+
 .reload{
   width: 60px!important;
   height: auto!important;
@@ -118,7 +147,7 @@
   font-family: 'Courier New', monospace;
   font-size: 18px;
   color:var(--text-color);
-  background-color:#f5f5f5;
+  background-color:var (--selector-color);
 }
 .timer-number.dark-mode {
   color: #ffffff;
@@ -179,4 +208,45 @@
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+
+.results {
+  font-size: 1.5rem;
+  color: #2ecc71;
+  text-align: center;
+  margin-top: 1rem;
+}
+.results-box {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #fff;
+
+  padding: 1rem;
+  border-radius: 8px;
+ 
+  animation: fadeIn 0.3s ease;
+}
+
+.actual-wpm {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.char-wrapper.space-char {
+  display: inline-block;
+  min-width: 0.5ch; /* ensures space has width */
+}
+
+.char-wrapper.incorrect.space-char {
+  background-color: rgba(244, 67, 54, 0.4); /* red background on wrong space */
+  border-radius: 4px;
 }

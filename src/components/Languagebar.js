@@ -19,7 +19,7 @@ const languages = [
   { key: 'sql', label: 'SQL' },
 ];
 
-export default function LanguageBar({ setLanguage, className = '' }) {
+export default function LanguageBar({ setLanguage, onNextSnippet, className = '' }) {
   return (
     <div className={`language-bar ${className}`}>
       {languages.map(lang => (
@@ -28,7 +28,12 @@ export default function LanguageBar({ setLanguage, className = '' }) {
           className={`language-item ${
             lang.label === 'Text' ? 'bg-black text-white' : ''
           }`}
-          onClick={() => setLanguage(lang.key)}
+          onClick={() => {
+            setLanguage(lang.key);
+            if (onNextSnippet) {
+              onNextSnippet(lang.key);
+            }
+          }}
         >
           {lang.label}
         </button>
