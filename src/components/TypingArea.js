@@ -15,13 +15,7 @@ const TypingArea = ({
 }) => {
   const location = useLocation();
   const {
-    timer = 60,
-    charLimit = 200,
-    difficulty = 'Easy',
-    textType = 'Words',
-    fontStyle = 'Sans Serif',
-    theme = 'light',
-    musicEnabled = false,
+   
   } = location.state || {};
 
   const [startTime, setStartTime] = useState(null);
