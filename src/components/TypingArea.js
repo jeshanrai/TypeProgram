@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TypingArea.css';
 import LanguageBar from './Languagebar'; // Make sure this import exists
+import { useLocation } from 'react-router-dom';
 
 const TypingArea = ({
   snippet,
@@ -12,6 +13,17 @@ const TypingArea = ({
   language, // <-- add this prop
   setLanguage // <-- add this prop
 }) => {
+  const location = useLocation();
+  const {
+    timer = 60,
+    charLimit = 200,
+    difficulty = 'Easy',
+    textType = 'Words',
+    fontStyle = 'Sans Serif',
+    theme = 'light',
+    musicEnabled = false,
+  } = location.state || {};
+
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [showWPM, setShowWPM] = useState(false);

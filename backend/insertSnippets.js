@@ -757,112 +757,290 @@ const snippets = [
 // {"language":"sql","code":"SELECT u.name, COUNT(o.id) AS order_total FROM users u JOIN orders o ON u.id = o.customer_id GROUP BY u.name ORDER BY order_total DESC;"},
 // {"language":"sql","code":"SELECT department_id, ROUND(AVG(salary), 2) FROM employees GROUP BY department_id ORDER BY ROUND(AVG(salary), 2) DESC;"}
 
-  {
-    "language": "text",
-    "code": "artificial intelligence powers innovation by enabling systems to learn adapt and evolve using data algorithms and computing power to solve challenges from logistics to medicine to climate research its alphabetic potential touches every sector shaping better futures while expanding the frontier of what machines and humans can achieve together with vision and ethics guiding development"
-  },
-  {
-    "language": "text",
-    "code": "biomedical research thrives with ai analyzing genetic data predicting mutations aiding drug design enhancing imaging and transforming patient care it identifies patterns invisible to human eyes accelerates trials improves diagnostics and brings precision into therapies all through data trained algorithms that learn from biology and adapt to save lives across every medical challenge"
-  },
-  {
-    "language": "text",
-    "code": "climate modeling now harnesses artificial intelligence to process environmental data forecast weather predict disasters and optimize energy use ai solutions offer insights into complex interactions within the earth system helping scientists develop adaptive responses mitigate risks and better understand patterns that are difficult for traditional simulations to accurately capture over time"
-  },
-  {
-    "language": "text",
-    "code": "data security powered by artificial intelligence enables anomaly detection adaptive defense systems and predictive threat analysis with ai analyzing traffic user behavior and historical breaches organizations can defend digital assets with smarter faster and more responsive measures ensuring that confidentiality integrity and access controls evolve in step with growing cyber complexity"
-  },
-  {
-    "language": "text",
-    "code": "education transforms with ai delivering personalized learning paths assessing student progress predicting struggles and offering customized resources its alphabetic reach ranges from automating grading to enabling voice tutors and interactive content letting learners engage at their pace while teachers gain tools for insight driven instruction and performance optimization across subjects"
-  },
-  {
-    "language": "text",
-    "code": "finance increasingly relies on artificial intelligence for risk modeling fraud detection algorithmic trading and customer support ai enables real time decision making by learning from markets user behavior and economic patterns it automates complex analysis while reducing error bringing speed insight and scalability to investment banking insurance and fintech innovations worldwide"
-  },
-  {
-    "language": "text",
-    "code": "government services are evolving through artificial intelligence with smarter urban planning efficient public transport predictive maintenance and responsive citizen interaction platforms ai helps administrations streamline processes analyze trends and design data driven policies while improving transparency access equity and decision making capabilities across complex bureaucratic structures"
-  },
-  {
-    "language": "text",
-    "code": "healthcare integrates artificial intelligence to predict diagnose and personalize treatment from interpreting imaging to analyzing symptoms it assists professionals by enhancing accuracy reducing time and expanding access machine learning models can detect disease early recommend interventions and improve outcomes while adapting to patient data in real time across global healthcare systems"
-  },
-  {
-    "language": "text",
-    "code": "intelligent assistants like voice activated devices and chatbots have revolutionized how users interact with technology powered by natural language processing they understand intent extract meaning and respond contextually they provide information entertainment and support seamlessly adapting to users and improving over time enabling frictionless communication in both home and workplace"
-  },
-  {
-    "language": "text",
-    "code": "justice systems explore artificial intelligence to analyze case law forecast legal outcomes and assist in sentencing decisions while ethical debates continue ai supports public defenders legal researchers and policy makers with document analysis precedent retrieval and risk evaluation promoting fair access and efficiency in legal systems where transparency and accuracy are paramount"
-  },
-  {
-    "language": "text",
-    "code": "knowledge discovery expands through artificial intelligence by identifying hidden correlations across vast datasets in fields such as chemistry astronomy sociology and linguistics ai models recognize trends extract insights and help build new hypotheses accelerating academic inquiry and opening interdisciplinary bridges between concepts ideas and patterns otherwise difficult to detect"
-  },
-  {
-    "language": "text",
-    "code": "logistics and supply chains are optimized by artificial intelligence through demand forecasting route planning and warehouse automation machine learning adapts to market shifts weather and supplier behavior ensuring faster deliveries reduced costs and better inventory control enhancing business resilience sustainability and customer satisfaction across local and global operations"
-  },
-  {
-    "language": "text",
-    "code": "manufacturing uses artificial intelligence for predictive maintenance quality control and autonomous robotics smart factories monitor machines detect failures early and adjust production in real time increasing output and safety while reducing costs the result is flexible scalable and intelligent production that responds dynamically to demand fluctuations and operational constraints"
-  },
-  {
-    "language": "text",
-    "code": "natural language processing empowers ai to understand generate and translate text across languages and domains from writing assistance to sentiment analysis to automated moderation these systems improve communication accessibility and understanding at scale enabling real time interaction across borders industries and cultures with growing fluency accuracy and cultural sensitivity"
-  },
-  {
-    "language": "text",
-    "code": "optimization problems across engineering logistics finance and energy are tackled with artificial intelligence by navigating complex variable spaces identifying ideal solutions and adapting in real time from scheduling flights to balancing electrical grids ai helps model simulate and manage resource constrained environments ensuring maximum efficiency flexibility and strategic alignment"
-  },
-  {
-    "language": "text",
-    "code": "predictive analytics driven by artificial intelligence transforms data into foresight by learning from past behavior it forecasts trends detects risk and enables informed decisions in domains like healthcare finance retail and energy it brings agility to planning strategy and operations empowering leaders to anticipate change act proactively and adapt with precision and clarity"
-  },
-  {
-    "language": "text",
-    "code": "quantum computing and artificial intelligence represent the frontier of computational advancement quantum ai models leverage superposition entanglement and advanced search techniques to solve problems too complex for traditional systems opening new possibilities in cryptography material science and artificial general intelligence with implications across scientific and industrial domains"
-  },
-  {
-    "language": "text",
-    "code": "robotics enhanced with artificial intelligence enables autonomous navigation manipulation and collaboration from surgical robots to warehouse pickers to planetary rovers these systems perceive adapt and act based on environmental input solving complex tasks with precision speed and safety while learning from feedback and working alongside humans in diverse industrial applications"
-  },
-  {
-    "language": "text",
-    "code": "smart agriculture adopts artificial intelligence to monitor crops optimize irrigation detect pests and predict yields combining satellite imaging soil data and machine learning farmers enhance productivity reduce waste and adapt to climate change improving food security and sustainability while using fewer resources with greater efficiency and predictive capability across farmlands"
-  },
-  {
-    "language": "text",
-    "code": "transportation systems benefit from artificial intelligence through traffic optimization self driving vehicles and fleet management from ride sharing algorithms to public transit routing ai analyzes movement patterns improves efficiency and safety and reduces congestion enabling smoother cleaner and more responsive mobility across urban environments powered by real time decision making"
-  },
-  {
-    "language": "text",
-    "code": "urban planning integrates artificial intelligence for zoning traffic control waste management and energy distribution ai helps model population growth simulate development and analyze spatial data enabling cities to evolve sustainably and inclusively while anticipating challenges managing complexity and making data driven policy decisions in support of livable urban ecosystems"
-  },
-  {
-    "language": "text",
-    "code": "virtual reality and artificial intelligence converge to build immersive responsive environments ai driven characters adapt to user behavior creating personalized experiences in training gaming and therapy combining perception planning and emotion these simulations enhance engagement and interactivity while offering tools for education entertainment and psychological interventions"
-  },
-  {
-    "language": "text",
-    "code": "wearables incorporate artificial intelligence to monitor health track movement and provide real time feedback these devices learn user habits detect anomalies and support wellness goals by analyzing biometric data enabling proactive care and personalized insights that encourage healthier lifestyles with the power of intelligent algorithms embedded in everyday accessories and sensors"
-  },
-  {
-    "language": "text",
-    "code": "xenobot development merges artificial intelligence with biotechnology to create programmable living machines these microscopic biological robots perform tasks like targeted drug delivery and tissue repair guided by ai driven simulations they adapt to environments enabling exploration into synthetic life and bioengineering with potential to revolutionize medicine and ecological intervention"
-  },
-  {
-    "language": "text",
-    "code": "youth education supported by artificial intelligence introduces students to adaptive learning creative problem solving and future skills ai tailors instruction engages curiosity and fosters digital fluency building confidence and capacity across disciplines ensuring that young minds are equipped to thrive in an increasingly automated and interconnected global knowledge economy"
-  },
-  {
-    "language": "text",
-    "code": "zoology gains new insights through artificial intelligence by automating species identification analyzing behavioral patterns and monitoring habitats ai processes video sound and sensor data to detect threats understand migration and inform conservation helping scientists protect biodiversity and ecosystems while deepening our understanding of animal life across continents and climates"
-  }
-
-
+  // {
+  //   "language": "text",
+  //   "code": "artificial intelligence powers innovation by enabling systems to learn adapt and evolve using data algorithms and computing power to solve challenges from logistics to medicine to climate research its alphabetic potential touches every sector shaping better futures while expanding the frontier of what machines and humans can achieve together with vision and ethics guiding development"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "biomedical research thrives with ai analyzing genetic data predicting mutations aiding drug design enhancing imaging and transforming patient care it identifies patterns invisible to human eyes accelerates trials improves diagnostics and brings precision into therapies all through data trained algorithms that learn from biology and adapt to save lives across every medical challenge"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "climate modeling now harnesses artificial intelligence to process environmental data forecast weather predict disasters and optimize energy use ai solutions offer insights into complex interactions within the earth system helping scientists develop adaptive responses mitigate risks and better understand patterns that are difficult for traditional simulations to accurately capture over time"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "data security powered by artificial intelligence enables anomaly detection adaptive defense systems and predictive threat analysis with ai analyzing traffic user behavior and historical breaches organizations can defend digital assets with smarter faster and more responsive measures ensuring that confidentiality integrity and access controls evolve in step with growing cyber complexity"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "education transforms with ai delivering personalized learning paths assessing student progress predicting struggles and offering customized resources its alphabetic reach ranges from automating grading to enabling voice tutors and interactive content letting learners engage at their pace while teachers gain tools for insight driven instruction and performance optimization across subjects"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "finance increasingly relies on artificial intelligence for risk modeling fraud detection algorithmic trading and customer support ai enables real time decision making by learning from markets user behavior and economic patterns it automates complex analysis while reducing error bringing speed insight and scalability to investment banking insurance and fintech innovations worldwide"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "government services are evolving through artificial intelligence with smarter urban planning efficient public transport predictive maintenance and responsive citizen interaction platforms ai helps administrations streamline processes analyze trends and design data driven policies while improving transparency access equity and decision making capabilities across complex bureaucratic structures"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "healthcare integrates artificial intelligence to predict diagnose and personalize treatment from interpreting imaging to analyzing symptoms it assists professionals by enhancing accuracy reducing time and expanding access machine learning models can detect disease early recommend interventions and improve outcomes while adapting to patient data in real time across global healthcare systems"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "intelligent assistants like voice activated devices and chatbots have revolutionized how users interact with technology powered by natural language processing they understand intent extract meaning and respond contextually they provide information entertainment and support seamlessly adapting to users and improving over time enabling frictionless communication in both home and workplace"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "justice systems explore artificial intelligence to analyze case law forecast legal outcomes and assist in sentencing decisions while ethical debates continue ai supports public defenders legal researchers and policy makers with document analysis precedent retrieval and risk evaluation promoting fair access and efficiency in legal systems where transparency and accuracy are paramount"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "knowledge discovery expands through artificial intelligence by identifying hidden correlations across vast datasets in fields such as chemistry astronomy sociology and linguistics ai models recognize trends extract insights and help build new hypotheses accelerating academic inquiry and opening interdisciplinary bridges between concepts ideas and patterns otherwise difficult to detect"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "logistics and supply chains are optimized by artificial intelligence through demand forecasting route planning and warehouse automation machine learning adapts to market shifts weather and supplier behavior ensuring faster deliveries reduced costs and better inventory control enhancing business resilience sustainability and customer satisfaction across local and global operations"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "manufacturing uses artificial intelligence for predictive maintenance quality control and autonomous robotics smart factories monitor machines detect failures early and adjust production in real time increasing output and safety while reducing costs the result is flexible scalable and intelligent production that responds dynamically to demand fluctuations and operational constraints"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "natural language processing empowers ai to understand generate and translate text across languages and domains from writing assistance to sentiment analysis to automated moderation these systems improve communication accessibility and understanding at scale enabling real time interaction across borders industries and cultures with growing fluency accuracy and cultural sensitivity"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "optimization problems across engineering logistics finance and energy are tackled with artificial intelligence by navigating complex variable spaces identifying ideal solutions and adapting in real time from scheduling flights to balancing electrical grids ai helps model simulate and manage resource constrained environments ensuring maximum efficiency flexibility and strategic alignment"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "predictive analytics driven by artificial intelligence transforms data into foresight by learning from past behavior it forecasts trends detects risk and enables informed decisions in domains like healthcare finance retail and energy it brings agility to planning strategy and operations empowering leaders to anticipate change act proactively and adapt with precision and clarity"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "quantum computing and artificial intelligence represent the frontier of computational advancement quantum ai models leverage superposition entanglement and advanced search techniques to solve problems too complex for traditional systems opening new possibilities in cryptography material science and artificial general intelligence with implications across scientific and industrial domains"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "robotics enhanced with artificial intelligence enables autonomous navigation manipulation and collaboration from surgical robots to warehouse pickers to planetary rovers these systems perceive adapt and act based on environmental input solving complex tasks with precision speed and safety while learning from feedback and working alongside humans in diverse industrial applications"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "smart agriculture adopts artificial intelligence to monitor crops optimize irrigation detect pests and predict yields combining satellite imaging soil data and machine learning farmers enhance productivity reduce waste and adapt to climate change improving food security and sustainability while using fewer resources with greater efficiency and predictive capability across farmlands"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "transportation systems benefit from artificial intelligence through traffic optimization self driving vehicles and fleet management from ride sharing algorithms to public transit routing ai analyzes movement patterns improves efficiency and safety and reduces congestion enabling smoother cleaner and more responsive mobility across urban environments powered by real time decision making"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "urban planning integrates artificial intelligence for zoning traffic control waste management and energy distribution ai helps model population growth simulate development and analyze spatial data enabling cities to evolve sustainably and inclusively while anticipating challenges managing complexity and making data driven policy decisions in support of livable urban ecosystems"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "virtual reality and artificial intelligence converge to build immersive responsive environments ai driven characters adapt to user behavior creating personalized experiences in training gaming and therapy combining perception planning and emotion these simulations enhance engagement and interactivity while offering tools for education entertainment and psychological interventions"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "wearables incorporate artificial intelligence to monitor health track movement and provide real time feedback these devices learn user habits detect anomalies and support wellness goals by analyzing biometric data enabling proactive care and personalized insights that encourage healthier lifestyles with the power of intelligent algorithms embedded in everyday accessories and sensors"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "xenobot development merges artificial intelligence with biotechnology to create programmable living machines these microscopic biological robots perform tasks like targeted drug delivery and tissue repair guided by ai driven simulations they adapt to environments enabling exploration into synthetic life and bioengineering with potential to revolutionize medicine and ecological intervention"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "youth education supported by artificial intelligence introduces students to adaptive learning creative problem solving and future skills ai tailors instruction engages curiosity and fosters digital fluency building confidence and capacity across disciplines ensuring that young minds are equipped to thrive in an increasingly automated and interconnected global knowledge economy"
+  // },
+  // {
+  //   "language": "text",
+  //   "code": "zoology gains new insights through artificial intelligence by automating species identification analyzing behavioral patterns and monitoring habitats ai processes video sound and sensor data to detect threats understand migration and inform conservation helping scientists protect biodiversity and ecosystems while deepening our understanding of animal life across continents and climates"
+  // }
+{"language":"easyCapital","code":"The early morning mist clung to the fields as farmers began their daily routines. Tractors rumbled to life while birds sang their dawn chorus. This peaceful scene repeats every day in rural communities worldwide. Agriculture remains the backbone of many economies despite technological advances."},
+{"language":"easyCapital","code":"Public libraries serve as invaluable community resources for people of all ages. They provide free access to knowledge through books, computers, and educational programs. Many libraries now offer digital lending services alongside traditional shelves. These institutions promote literacy and lifelong learning in our society."},
+{"language":"easyCapital","code":"Modern zoos play crucial roles in wildlife conservation and education. They maintain breeding programs for endangered species while teaching visitors about biodiversity. Ethical zoos prioritize animal welfare through spacious enclosures and proper care. These facilities help protect species that might otherwise face extinction."},
+{"language":"easyCapital","code":"Journalism remains essential for maintaining an informed democracy in the digital age. Investigative reporters uncover truths that powerful entities often want hidden. Ethical journalism follows strict fact-checking procedures before publishing stories. A free press acts as society's watchdog against corruption and injustice."},
+{"language":"easyCapital","code":"Urban parks provide vital green spaces in concrete jungles across the world. These oases offer residents places to exercise, relax, and connect with nature. City planners increasingly recognize their importance for mental health and air quality. Well-maintained parks can transform neighborhoods and bring communities together."},
+{"language":"easyCapital","code":"Traditional crafts preserve cultural heritage that machines cannot replicate. Artisans spend years mastering techniques passed down through generations. Their handmade products tell stories of regional history and identity. Supporting these craftspeople helps keep ancient traditions alive in our modern world."},
+{"language":"easyCapital","code":"Public transportation systems reduce traffic congestion and environmental impact. Efficient networks enable citizens to commute without personal vehicles. Investments in metro systems and buses make cities more livable and sustainable. These services particularly benefit low-income residents who cannot afford cars."},
+{"language":"easyCapital","code":"Childhood education forms the foundation for lifelong learning and development. Quality preschools prepare children academically and socially for formal schooling. Early intervention programs can identify and address learning difficulties promptly. Societies that invest in early education see long-term economic and social benefits."},
+{"language":"easyCapital","code":"Museums safeguard humanity's collective knowledge and artistic achievements. Curators carefully preserve artifacts that represent our shared history. Interactive exhibits now complement traditional displays to engage younger visitors. These institutions bridge past and present while inspiring future generations."},
+{"language":"easyCapital","code":"Volunteer organizations address social issues that governments cannot solve alone. Dedicated individuals donate time and skills to help vulnerable populations. Food banks, shelters, and mentorship programs rely heavily on volunteer support. Such civic engagement strengthens community bonds and creates positive change."},
+{"language":"easyCapital","code":"Sleep remains one of the most overlooked aspects of health and wellbeing. Consistent quality sleep improves cognitive function and emotional regulation. Modern lifestyles often disrupt natural circadian rhythms with artificial light. Prioritizing sleep hygiene can significantly enhance daily performance and longevity."},
+{"language":"easyCapital","code":"Local markets foster direct connections between producers and consumers. Farmers sell fresh seasonal produce while artisans offer handmade goods. These vibrant spaces preserve traditional commerce in an era of online shopping. Visiting markets supports local economies and reduces environmental footprints."},
+{"language":"easyCapital","code":"Public healthcare systems ensure medical access regardless of income levels. Preventative care reduces long-term costs by catching illnesses early. Well-funded hospitals and clinics form the backbone of community health. Equitable healthcare contributes to societal stability and economic productivity."},
+{"language":"easyCapital","code":"Architecture reflects cultural values and technological capabilities of civilizations. Historic buildings tell stories about how people lived in different eras. Sustainable design now prioritizes energy efficiency and environmental harmony. Thoughtful architecture enhances quality of life while minimizing ecological impact."},
+{"language":"easyCapital","code":"Scientific research drives innovations that improve living standards worldwide. Rigorous experimentation and peer review ensure reliable discoveries. Basic research often leads to unexpected practical applications years later. Continued investment in science remains crucial for solving global challenges."},
+{"language":"easyCapital","code":"Traditional cuisines represent cultural identities and local ecosystems. Regional dishes develop from available ingredients and historical influences. Food preservation techniques evolved before modern refrigeration existed. Sharing meals remains a universal human experience that transcends language barriers."},
+{"language":"easyCapital","code":"Renewable energy technologies continue advancing toward mainstream viability. Solar panels and wind turbines now compete with fossil fuel alternatives. Energy storage solutions address intermittency issues for green power sources. Transitioning to sustainable energy systems benefits both environment and economy."},
+{"language":"easyCapital","code":"Mental health awareness has grown significantly in recent decades. Destigmatizing psychological struggles encourages more people to seek help. Workplace policies increasingly recognize the importance of emotional wellbeing. Holistic healthcare now integrates mental and physical health approaches."},
+{"language":"easyCapital","code":"Community theaters nurture local talent and provide accessible cultural experiences. Amateur performers gain confidence while entertaining neighborhood audiences. These venues often premiere works by emerging playwrights and composers. Live performances create shared experiences that recordings cannot replicate."},
+{"language":"easyCapital","code":"Urban farming initiatives bring food production into city environments. Rooftop gardens and vertical farms maximize limited space efficiently. These projects improve food security while reducing transportation emissions. Community gardens also provide educational opportunities and green spaces."},
+{"language":"easyNumber","code":"the average human body contains approximately 37.2 trillion cells working together. red blood cells live for about 120 days before being replaced. the heart pumps 7000 liters of blood daily through 100000 kilometers of blood vessels. skin completely renews itself every 27 days on average."},
+{"language":"easyNumber","code":"mount everest stands at 8848 meters above sea level as earth's highest point. the mariana trench reaches 11034 meters deep in the pacific ocean. continental plates move at 2-5 centimeters per year, reshaping continents over millennia. volcanic eruptions can eject 1 million tons of material per second."},
+{"language":"easyNumber","code":"the internet connects over 5 billion users worldwide through 1 billion websites. approximately 4.5 million blog posts publish daily across various platforms. an estimated 500 hours of video upload to youtube every minute. global internet traffic exceeds 150000 gigabytes per second during peak times."},
+{"language":"easyNumber","code":"the great pyramid of giza contains about 2.3 million stone blocks averaging 2.5 tons each. construction required approximately 20000 workers over 20 years. its original height measured 146.6 meters before erosion. the structure aligns with true north within 0.05 degrees of accuracy."},
+{"language":"easyNumber","code":"a honeybee visits 50-100 flowers during one collection trip. the average hive contains 50000 bees during peak season. worker bees live 6 weeks in summer but several months in winter. a single pound of honey represents nectar from approximately 2 million flowers."},
+{"language":"easyNumber","code":"the human eye can distinguish about 10 million different colors. rods outnumber cones 20 to 1 in retinal photoreceptors. tears consist of 3 distinct layers protecting the ocular surface. blinking occurs 15-20 times per minute, totaling 10000 daily blinks on average."},
+{"language":"easyNumber","code":"earth's atmosphere extends about 10000 kilometers into space. 78 percent consists of nitrogen while oxygen makes up 21 percent. the ozone layer absorbs 97-99 percent of harmful ultraviolet radiation. atmospheric pressure decreases by half every 5500 meters of altitude gained."},
+{"language":"easyNumber","code":"the amazon rainforest covers approximately 5.5 million square kilometers. it produces 20 percent of earth's oxygen while hosting 10 percent of known species. deforestation removes 10000 square kilometers annually on average. a single hectare may contain 400 tree species and 1500 insect species."},
+{"language":"easyNumber","code":"the human skeleton completely regenerates every 10 years through remodeling. bones constitute 14 percent of total body weight in adults. the femur can support 30 times body weight during running impacts. teeth enamel ranks as the hardest substance in the human body."},
+{"language":"easyNumber","code":"light travels 299792 kilometers per second in vacuum conditions. sunlight takes 8 minutes 20 seconds to reach earth's surface. the visible spectrum ranges from 380 to 700 nanometers wavelength. a single photon may take 10000 years to travel from the sun's core to its surface."},
+{"language":"easyNumber","code":"the pacific ocean spans 165.2 million square kilometers, covering 30 percent of earth's surface. its average depth measures 4280 meters below sea level. ocean currents move at speeds between 1-10 kilometers per hour. seawater contains approximately 3.5 percent dissolved salts by weight."},
+{"language":"easyNumber","code":"the human brain contains about 86 billion neurons forming 100 trillion connections. cerebral cortex surface area would cover 2500 square centimeters if flattened. neurons transmit signals at speeds up to 120 meters per second. brain activity consumes 20 watts of power continuously."},
+{"language":"easyNumber","code":"antarctica holds 90 percent of earth's ice and 70 percent of freshwater. average ice thickness measures 1.6 kilometers across the continent. the lowest recorded temperature reached -89.2 degrees celsius in 1983. only 1 percent of the land remains permanently ice-free."},
+{"language":"easyNumber","code":"a commercial jetliner cruises at 900 kilometers per hour at 10000 meters altitude. fuel consumption averages 4 liters per second during flight. the cabin maintains pressure equivalent to 2400 meters elevation. contrails form when hot exhaust meets -50 degree celsius air."},
+{"language":"easyNumber","code":"the average person takes 8000-10000 steps daily over a lifetime. walking burns approximately 0.04 calories per step based on body weight. foot arches contain 25 percent of the body's total bones. running increases ground reaction forces to 2-3 times body weight."},
+{"language":"easyNumber","code":"global coffee consumption exceeds 2.25 billion cups daily. brazil produces 40 percent of the world's coffee supply annually. coffee plants require 3-4 years to mature before first harvest. caffeine's half-life in the human body averages 5 hours."},
+{"language":"easyNumber","code":"the great barrier reef stretches 2300 kilometers along australia's coast. it comprises 2900 individual reefs and 900 islands. coral polyps measure 1-3 millimeters in diameter. reef structures grow at average rates of 1-3 centimeters per year."},
+{"language":"easyNumber","code":"the international space station orbits at 400 kilometers altitude. it completes 15.5 orbits daily at 28000 kilometers per hour. construction required 42 assembly flights between 1998-2011. solar arrays span 2400 square meters producing 120 kilowatts of power."},
+{"language":"easyNumber","code":"a sneeze expels air at 160 kilometers per hour from the respiratory tract. coughs reach speeds of 80 kilometers per hour on average. lung surface area would cover a tennis court if unfolded. humans breathe 11000 liters of air daily at rest."},
+{"language":"easyNumber","code":"the human gut microbiome contains 100 trillion bacterial cells. over 1000 species inhabit the digestive tract collectively. microbiota outnumber human cells by 10 to 1 ratio. intestinal bacteria produce 95 percent of the body's serotonin supply."},
+{"language":"easySymbol","code":"the gentle hum of a refrigerator fills the quiet kitchen at night. condensation forms on the cold glass of water left on the counter. shadows stretch long across the floor as moonlight filters through the blinds. these small details create the poetry of ordinary moments."},
+{"language":"easySymbol","code":"rustling leaves dance across the pavement in autumn's crisp breeze. squirrels scurry to bury their winter stash beneath towering oaks. the earthy scent of decaying vegetation mingles with woodsmoke. nature prepares for its seasonal slumber with quiet determination."},
+{"language":"easySymbol","code":"steam rises from the morning coffee in swirling, aromatic tendrils. fingers wrap around the warm mug, absorbing its comforting heat. the first bitter sip jolts the senses into wakefulness. this simple ritual marks the transition from sleep to daily life."},
+{"language":"easySymbol","code":"waves whisper secrets as they lap against weathered wooden pilings. seagulls cry overhead while searching for their next meal. the briny air sticks to skin and hair with persistent affection. these sensory gifts arrive free with every visit to the shore."},
+{"language":"easySymbol","code":"pencil scratches on paper create a rhythm like light rainfall. ideas flow faster than the hand can capture them completely. crossed-out words litter the margins like fallen soldiers. the messy process of creation leaves its mark on both page and mind."},
+{"language":"easySymbol","code":"raindrops race down windowpanes in unpredictable, meandering paths. each droplet distorts the world beyond into impressionist paintings. the steady percussion on the roof lulls listeners into tranquility. water transforms ordinary views into temporary art installations."},
+{"language":"easySymbol","code":"freshly laundered sheets smell like sunshine and summer breezes. crisp folds give way to comforting softness at bedtime. the weight of blankets provides security against nighttime chills. these simple textiles weave magic into our most vulnerable hours."},
+{"language":"easySymbol","code":"bacon sizzles in the pan with its irresistible symphony of sound. the rich aroma permeates every corner of the sleeping house. grease pops and crackles like miniature fireworks. few scents can rouse sleepers as effectively as breakfast cooking."},
+{"language":"easySymbol","code":"the creak of wooden floorboards tells the house's secret stories. each groan and pop marks the passage of time in the structure. these sounds become familiar friends to long-term residents. an old house never stays completely silent, even at night."},
+{"language":"easySymbol","code":"dust motes float lazily in sunbeams streaming through the window. each particle dances to its own invisible current. the light reveals what normally stays hidden in shadows. these tiny travelers remind us of the unseen world around us."},
+{"language":"easySymbol","code":"the metallic tang of blood follows an accidental paper cut. the sting arrives moments later as a sharp reprimand. such small wounds heal quickly but command attention. our bodies remind us constantly of their delicate nature."},
+{"language":"easySymbol","code":"popcorn kernels explode like miniature fireworks in the microwave. the erratic percussion builds to a frantic crescendo. buttery fragrance soon overpowers the kitchen air. this transformation from hard seeds to fluffy clouds seems like magic."},
+{"language":"easySymbol","code":"the scratch of a match ignites both flame and memory. sulfur's sharp scent gives way to candle wax's softer perfume. flickering light paints moving shadows on nearby walls. this ancient technology still holds power over modern senses."},
+{"language":"easySymbol","code":"warm sand shifts beneath bare feet with each step forward. granules stick to damp skin after wading in the surf. the beach constantly rearranges itself with tides and winds. this temporary landscape never looks exactly the same twice."},
+{"language":"easySymbol","code":"the dentist's drill whines its high-pitched warning of impending work. cold air blasts across sensitive teeth during examinations. the chair reclines slowly like a surrender to necessity. these visits test courage in ways adventure stories never mention."},
+{"language":"easySymbol","code":"a cat's purr vibrates through its entire small frame when content. whiskers twitch during dreams of hunting or play. the rhythmic kneading of paws mimics nursing from long ago. these behaviors connect domestic pets to their wild ancestors."},
+{"language":"easySymbol","code":"steam rises from manhole covers like urban geysers in winter. the city breathes its heated exhaust through these metal portals. pedestrians avoid walking over them from superstition or physics. underground mysteries occasionally reveal themselves through these openings."},
+{"language":"easySymbol","code":"the zipper's teeth interlock with satisfying precision when aligned. this simple mechanism revolutionized clothing design completely. stuck zippers frustrate with their stubborn refusal to cooperate. such small inventions shape daily experiences in profound ways."},
+{"language":"easySymbol","code":"bubbles rise through amber liquid in a freshly poured soda. carbonation tickles the nose before the first refreshing sip. ice cubes crackle as they adjust to their new environment. this effervescent science lesson hides in plain sight at every meal."},
+{"language":"easySymbol","code":"the newspaper crinkles loudly when unfolded each morning. ink rubs off on fingertips as evidence of reading. crossword puzzles wait patiently for mental engagement. this analog ritual persists despite digital alternatives everywhere."},
+{"language":"mediumCapital","code":"The photovoltaic cells integrated into modern solar panels convert sunlight into electricity with remarkable efficiency. These semiconductor devices utilize the photoelectric effect discovered by Einstein, transforming photon energy into usable current. Manufacturers continually refine crystalline silicon and thin-film technologies to improve conversion rates beyond 22% in commercial products."},
+{"language":"mediumCapital","code":"Quantum computing leverages superposition and entanglement phenomena to perform calculations exponentially faster than classical computers for specific problems. Qubits, unlike binary bits, can exist in multiple states simultaneously through coherent manipulation. However, maintaining quantum coherence presents substantial engineering challenges due to environmental decoherence effects."},
+{"language":"mediumCapital","code":"CRISPR-Cas9 gene editing technology has revolutionized molecular biology by enabling precise genomic modifications. This bacterial defense mechanism was repurposed as programmable molecular scissors that can target specific DNA sequences. Ethical debates persist regarding therapeutic applications versus potential germline editing consequences."},
+{"language":"mediumCapital","code":"Neural networks mimic biological cognition through interconnected layers of artificial neurons that process information hierarchically. Backpropagation algorithms adjust synaptic weights during training to minimize output errors. Deep learning architectures now surpass human performance in narrow domains like image recognition and strategic gameplay."},
+{"language":"mediumCapital","code":"Blockchain technology establishes decentralized ledgers through cryptographic hashing and consensus protocols. Each block contains timestamped transactions linked immutably to preceding blocks. Smart contracts executed on platforms like Ethereum enable trustless automation of complex agreements without intermediaries."},
+{"language":"mediumCapital","code":"The Human Microbiome Project revealed that microbial cells outnumber human cells by orders of magnitude in healthy individuals. These symbiotic communities influence metabolism, immunity, and even neurological function through the gut-brain axis. Dysbiosis correlates with numerous chronic conditions including inflammatory bowel disease and depression."},
+{"language":"mediumCapital","code":"Exoplanet detection methods include transit photometry measuring stellar dimming and radial velocity analyzing Doppler shifts. The habitable zone defines orbital distances where liquid water could exist on rocky planets. Next-generation telescopes will characterize atmospheric biosignatures like oxygen and methane on promising candidates."},
+{"language":"mediumCapital","code":"Metamaterials engineered with subwavelength structures exhibit extraordinary electromagnetic properties not found in nature. Negative refractive indices enable perfect lenses surpassing diffraction limits. Potential applications include invisibility cloaking, ultra-efficient solar absorbers, and revolutionary optical computing architectures."},
+{"language":"mediumCapital","code":"Mitochondrial DNA analysis provides maternal lineage tracing because these organelles are exclusively inherited from oocytes. Mutation rates facilitate molecular clock calculations for evolutionary timelines. Heteroplasmy occurs when mutant and wild-type mitochondrial genomes coexist within cells, complicating disease inheritance patterns."},
+{"language":"mediumCapital","code":"Topological insulators conduct electricity only along their surfaces while remaining insulating internally. This quantum state arises from spin-orbit coupling and time-reversal symmetry protection. Potential applications include low-power electronics and fault-tolerant quantum computation platforms resistant to decoherence."},
+{"language":"mediumCapital","code":"Optogenetics combines genetic targeting with light-sensitive ion channels for precise neural circuit manipulation. Channelrhodopsins depolarize neurons in response to blue light, enabling millisecond-timescale control. This technique revolutionized neuroscience by establishing causal relationships between neural activity and behavior."},
+{"language":"mediumCapital","code":"Directed evolution mimics natural selection in laboratory settings to engineer biomolecules with enhanced properties. Iterative rounds of mutagenesis and screening produce enzymes with novel catalytic functions. This approach generated therapeutics like Humira and industrial biocatalysts for green chemistry applications."},
+{"language":"mediumCapital","code":"Plasmonic nanoparticles concentrate electromagnetic fields at subwavelength scales through collective electron oscillations. Localized surface plasmon resonances enable ultrasensitive molecular detection and photothermal therapies. Gold nanorods exhibit tunable optical properties based on their aspect ratios and dielectric environments."},
+{"language":"mediumCapital","code":"Organoid cultures derived from stem cells self-organize into three-dimensional tissue proxies with remarkable fidelity. These miniature organs recapitulate developmental processes and disease phenotypes in vitro. Pharmaceutical companies utilize them for high-throughput drug screening and toxicity testing."},
+{"language":"mediumCapital","code":"Single-cell RNA sequencing reveals transcriptional heterogeneity within seemingly uniform cell populations. Droplet microfluidics enables parallel analysis of thousands of individual cells. This technology uncovered rare cell states in tumors and developmental systems previously obscured by bulk measurements."},
+{"language":"mediumCapital","code":"Solid-state batteries employ ceramic electrolytes instead of flammable liquids for improved safety and energy density. Lithium metal anodes coupled with sulfide solid electrolytes promise 500+ Wh/kg performance. Dendrite suppression remains the primary challenge for commercial viability in electric vehicles."},
+{"language":"mediumCapital","code":"Synthetic biology applies engineering principles to design genetic circuits with predictable behaviors. Standardized biological parts like promoters and ribosome binding sites facilitate modular construction. Applications range from biosensors to microbial production of complex pharmaceuticals and biofuels."},
+{"language":"mediumCapital","code":"Gravitational wave astronomy detects spacetime ripples from cataclysmic cosmic events using interferometers. LIGO's kilometer-scale arms measure length changes smaller than a proton diameter. Multi-messenger astronomy combines these signals with electromagnetic observations for unprecedented astrophysical insights."},
+{"language":"mediumCapital","code":"Allosteric regulation controls protein activity through binding at sites distant from functional domains. Conformational changes propagate through tertiary structures like molecular switches. This fundamental mechanism underlies metabolic feedback inhibition and many pharmacological interventions."},
+{"language":"mediumCapital","code":"Adiabatic quantum computation slowly evolves quantum states to solve optimization problems encoded in Hamiltonians. Quantum annealing machines like D-Wave leverage this approach to explore solution landscapes. Error correction remains challenging due to environmental noise and limited qubit connectivity."},
+{"language":"mediumNumber","code":"the james webb space telescope orbits the l2 lagrange point 1.5 million kilometers from earth. its 6.5-meter segmented mirror collects infrared light with wavelength sensitivity from 0.6 to 28.5 micrometers. the sunshield maintains instruments at -223°c for optimal performance in detecting distant galaxies."},
+{"language":"mediumNumber","code":"modern semiconductor fabrication uses extreme ultraviolet lithography at 13.5nm wavelengths. each asml euv machine contains over 100000 components and costs $120 million. the latest process nodes pack over 100 million transistors per square millimeter on silicon wafers."},
+{"language":"mediumNumber","code":"the large hadron collider accelerates protons to 6.5 tev energies in its 27-kilometer ring. collisions occur every 25 nanoseconds during operation, generating petabytes of data annually. superconducting niobium-titanium magnets operate at 1.9k to maintain the necessary magnetic fields."},
+{"language":"mediumNumber","code":"human genome sequencing costs dropped from $100 million in 2001 to under $600 today. nanopore sequencing reads dna strands in real-time through 1.5nm protein pores. typical exome capture covers 1-2% of the genome but contains 85% of known disease-causing variants."},
+{"language":"mediumNumber","code":"the fastest supercomputers achieve over 1 exaflop performance using millions of processing cores. frontier at oak ridge national laboratory utilizes 9472 epyc processors and 37888 radeon gpus. its 8.7 million cores consume 21 megawatts while solving complex scientific problems."},
+{"language":"mediumNumber","code":"global co2 levels reached 420 parts per million in 2023, up from 280ppm pre-industrial. the keeling curve shows seasonal oscillations of 5-6ppm superimposed on steady annual increases. carbon capture systems aim to remove 1 gigaton annually by 2030 through direct air capture."},
+{"language":"mediumNumber","code":"5g networks operate in millimeter wave bands between 24ghz and 100ghz with latency under 1ms. small cells provide coverage every 100-200 meters in dense urban deployments. massive mimo antennas support over 100 simultaneous connections per base station."},
+{"language":"mediumNumber","code":"the human retina contains approximately 120 million rods and 6 million cones. ganglion cells transmit visual information through 1 million optic nerve fibers. photoreceptors respond to single photons but require 5-10 photons for conscious perception."},
+{"language":"mediumNumber","code":"fiber optic cables transmit data at 200 terabits per second using wavelength division multiplexing. signal loss in modern fibers measures 0.2db per kilometer at 1550nm wavelengths. submarine cables span over 1.3 million kilometers globally, carrying 99% of international data."},
+{"language":"mediumNumber","code":"the international thermonuclear experimental reactor will heat plasma to 150 million degrees celsius. its 23,000-ton tokamak contains 10,000 kilometers of superconducting cable. the project aims to demonstrate net energy gain from nuclear fusion by 2035."},
+{"language":"mediumNumber","code":"modern wind turbine blades exceed 100 meters in length with tip speeds over 300 km/h. a single 12mw offshore turbine generates enough electricity for 16,000 european homes. capacity factors average 40-50% in optimal wind locations."},
+{"language":"mediumNumber","code":"the square kilometer array will comprise thousands of antennas across 3000 kilometers. its total collecting area measures 1 square kilometer at mid-frequency ranges. the telescope will survey the sky 10000 times faster than current instruments."},
+{"language":"mediumNumber","code":"electron microscopes achieve sub-angstrom resolution using accelerating voltages over 300kv. aberration correctors compensate for lens imperfections at atomic scales. cryo-em techniques flash-freeze samples at -180°c to preserve biomolecular structures."},
+{"language":"mediumNumber","code":"the global positioning system uses 31 operational satellites in medium earth orbit. each satellite contains 4 atomic clocks accurate to 1 nanosecond. trilateration requires signals from at least 4 satellites to determine 3d position within 5 meters."},
+{"language":"mediumNumber","code":"modern ssds achieve 7000mb/s read speeds using pcie 4.0 interfaces and 3d nand stacking. endurance ratings exceed 1500 program/erase cycles for consumer drives. error correction handles 1 bit error per 10^17 bits read through advanced algorithms."},
+{"language":"mediumNumber","code":"the brain consumes 20% of basal metabolism despite being 2% of body weight. cortical neurons fire at 0.1-2hz on average but can reach 200hz during bursts. synaptic transmission delays measure 0.5-4 milliseconds depending on pathway myelination."},
+{"language":"mediumNumber","code":"lithium-ion battery energy density improved from 100wh/kg in 1991 to 300wh/kg today. silicon anodes could theoretically reach 4200mah/g compared to graphite's 372mah/g. solid-state prototypes demonstrate 500+ cycles at 1c charge rates."},
+{"language":"mediumNumber","code":"the hubble constant measures cosmic expansion at 73 km/s per megaparsec with 2.4% uncertainty. type ia supernovae serve as standard candles for distances up to 1000 megaparsecs. cosmic microwave background measurements suggest the universe is 13.8 billion years old."},
+{"language":"mediumNumber","code":"artificial photosynthesis systems achieve 15% solar-to-fuel efficiency in laboratory settings. molecular catalysts split water at over 100 turnovers per second. tandem photoelectrochemical cells combine light absorption and electrochemical reactions in integrated devices."},
+{"language":"mediumNumber","code":"the event horizon telescope combined 8 radio telescopes to image a black hole's shadow. its effective aperture equaled earth's diameter at 1.3mm wavelength. future expansions will add 16 more observatories for improved resolution."},
+{"language":"mediumSymbol","code":"the polymerase chain reaction's exponential amplification transformed molecular diagnostics; a few dna copies become billions through thermal cycling. taq polymerase's thermostability enables automated repetition of denaturation, annealing, and extension steps—each cycle doubling target sequences."},
+{"language":"mediumSymbol","code":"cryogenic electron microscopy reveals macromolecular structures without crystallization; flash-frozen samples preserve native conformations in vitreous ice. computational reconstruction generates 3d densities from thousands of 2d particle images—resolution now surpassing 1.5 ångströms."},
+{"language":"mediumSymbol","code":"mass spectrometry's analytical power stems from precise mass-to-charge ratio measurements; ionization techniques range from electrospray to matrix-assisted laser desorption. tandem ms fragments molecules for structural elucidation—mass analyzers achieve ppm-level accuracy."},
+{"language":"mediumSymbol","code":"next-generation sequencing's parallelized approach generates gigabases per run; library preparation fragments dna while adding adapter sequences. cluster generation on flow cells enables synchronous sequencing-by-synthesis—base calling algorithms interpret fluorescent signals."},
+{"language":"mediumSymbol","code":"flow cytometry's multiparametric analysis characterizes single cells in suspension; fluorescent antibodies bind specific epitopes as lasers excite fluorophores. forward/scatter measurements indicate size/granularity—sorting capabilities isolate populations with 99% purity."},
+{"language":"mediumSymbol","code":"super-resolution microscopy bypasses the diffraction limit; stochastic blinking/localization achieves nanometer precision. structured illumination reconstructs high-frequency information—these techniques visualize subcellular structures previously obscured."},
+{"language":"mediumSymbol","code":"chromatin immunoprecipitation identifies protein-dna interactions; crosslinking preserves native binding before antibody enrichment. sequencing precipitated dna reveals transcription factor binding sites—histone modification maps delineate regulatory elements."},
+{"language":"mediumSymbol","code":"microfluidics manipulates picoliter volumes in engineered channels; droplet generators create monodisperse emulsions for single-cell analysis. lab-on-a-chip devices integrate sample preparation, separation, and detection—minimizing reagents while maximizing throughput."},
+{"language":"mediumSymbol","code":"atomic force microscopy probes surfaces with nanometer precision; cantilever deflection measures intermolecular forces. tapping mode preserves delicate samples—functionalized tips map specific molecular interactions through force spectroscopy."},
+{"language":"mediumSymbol","code":"x-ray crystallography deduces atomic structures from diffraction patterns; bragg's law relates scattering angles to lattice spacing. molecular replacement solves phase problems—electron density maps guide model building into experimental data."},
+{"language":"mediumSymbol","code":"surface plasmon resonance detects binding events in real-time; refractive index changes near gold films alter resonance angles. kinetic analysis derives association/dissociation rates—label-free measurements quantify biomolecular interactions precisely."},
+{"language":"mediumSymbol","code":"two-photon microscopy excites fluorophores with near-infrared light; localized excitation minimizes photodamage in thick tissues. second harmonic generation visualizes non-centrosymmetric structures—vital for intravital imaging of living organisms."},
+{"language":"mediumSymbol","code":"electrophoretic mobility shift assays reveal nucleic acid-protein interactions; retardation indicates binding in native gels. competition experiments determine specificity—supershifts confirm complex composition through antibody addition."},
+{"language":"mediumSymbol","code":"isothermal titration calorimetry directly measures binding thermodynamics; heat changes quantify enthalpy/entropy contributions. stoichiometry and affinity derive from titration curves—no labeling or immobilization required."},
+{"language":"mediumSymbol","code":"patch-clamp electrophysiology records ion channel activity with picoampere resolution; gigaseals isolate membrane patches. voltage-clamp controls membrane potential—current measurements reveal single-channel conductance and kinetics."},
+{"language":"mediumSymbol","code":"circular dichroism spectroscopy probes secondary structure asymmetry; differential absorption of polarized light reveals protein folding. thermal denaturation monitors stability—spectral deconvolution estimates α-helix/β-sheet content."},
+{"language":"mediumSymbol","code":"fluorescence recovery after photobleaching tracks molecular mobility; localized bleaching creates concentration gradients. recovery rates indicate diffusion coefficients—immobile fractions reveal bound populations."},
+{"language":"mediumSymbol","code":"bacterial artificial chromosomes clone large dna inserts (100-300kb); low-copy replication maintains stability. recombinogenic engineering modifies inserts—essential for constructing transgenic animals and genome libraries."},
+{"language":"mediumSymbol","code":"RNA interference silences genes post-transcriptionally; dicer processes double-stranded RNA into 21-23nt fragments. RISC incorporation guides target cleavage—potent knockdowns enable functional genomics studies."},
+{"language":"mediumSymbol","code":"chromosome conformation capture maps three-dimensional genome architecture; proximity ligation identifies interacting loci. contact probability matrices reveal topologically associating domains—critical for understanding gene regulation."},
+{"language":"hardCapital","code":"The Schrödinger Equation fundamentally describes how quantum systems evolve temporally through partial differential equations incorporating imaginary numbers and Hamiltonian operators while maintaining unitary evolution of wavefunctions in Hilbert space according to Born's probabilistic interpretation of quantum mechanics."},
+{"language":"hardCapital","code":"Poststructuralist philosophers like Derrida and Foucault critically examine how metanarratives construct epistemological frameworks through discursive formations that simultaneously reveal and conceal power dynamics embedded within institutionalized knowledge systems and their corresponding regimes of truth."},
+{"language":"hardCapital","code":"The Byzantine Empire's theological controversies surrounding Iconoclasm during the Isaurian Dynasty reflected deeper sociopolitical tensions between ecclesiastical authority and imperial power while simultaneously influencing the development of Orthodox Christianity's distinctive visual culture and liturgical practices."},
+{"language":"hardCapital","code":"Neoclassical economists postulate that rational actors operating within efficient markets will naturally optimize utility functions through marginal analysis despite well-documented cognitive biases and systematic deviations from perfect rationality demonstrated by behavioral economics research."},
+{"language":"hardCapital","code":"Paleoclimatologists utilize oxygen isotope ratios in foraminifera tests from deep-sea sediment cores to reconstruct Pleistocene temperature variations while accounting for diagenetic alterations and vital effects that may compromise the fidelity of these geochemical proxies."},
+{"language":"hardCapital","code":"The Habsburg Dynasty's strategic matrimonial alliances across Renaissance Europe exemplified realpolitik statecraft that simultaneously expanded territorial claims while exacerbating genetic disorders through consanguineous marriages ultimately culminating in the infamous Habsburg Jaw."},
+{"language":"hardCapital","code":"Transcendentalist philosophers like Emerson and Thoreau advocated for self-reliance and intuitive understanding of universal truths through direct engagement with nature while critiquing the artificial constraints imposed by industrialized society and institutionalized religion."},
+{"language":"hardCapital","code":"The Manhattan Project's interdisciplinary collaboration between theoretical physicists experimental chemists and military engineers fundamentally altered the nature of warfare while raising profound ethical questions about scientific responsibility and the dual-use dilemma."},
+{"language":"hardCapital","code":"Mannerist painters like Pontormo and Rosso Fiorentino deliberately distorted proportions and employed unnatural color palettes to create psychological tension that challenged High Renaissance ideals of harmony and balance."},
+{"language":"hardCapital","code":"The Thirty Years' War devastated Central Europe through complex confessional conflicts that gradually transformed into geopolitical struggles between the Habsburgs and Bourbons while simultaneously accelerating the development of modern state sovereignty."},
+{"language":"hardCapital","code":"Kant's categorical imperative requires moral agents to act only according to maxims that could become universal laws while simultaneously treating humanity never merely as means but always as ends in themselves."},
+{"language":"hardCapital","code":"The Silk Road facilitated not only material exchange but also the transmission of religious ideas technological innovations and artistic motifs between Han China and the Roman Empire while bypassing Parthian intermediaries."},
+{"language":"hardCapital","code":"Baroque composers like Bach and Handel employed counterpoint and basso continuo to create complex polyphonic textures while adhering to the doctrine of affections that prescribed specific musical devices for emotional expression."},
+{"language":"hardCapital","code":"The Reconquista's protracted military campaigns gradually reestablished Christian hegemony in Iberia while fostering unique cultural syncretism that incorporated Mudéjar architectural elements and Arabic intellectual traditions."},
+{"language":"hardCapital","code":"The Frankfurt School's critical theory synthesizes Marxist analysis with Freudian psychoanalysis to examine how advanced capitalism manipulates consciousness through the culture industry while suppressing revolutionary potential."},
+{"language":"hardCapital","code":"The Columbian Exchange dramatically altered global ecosystems through the transatlantic transfer of crops animals and pathogens while simultaneously creating novel epidemiological vulnerabilities in previously isolated populations."},
+{"language":"hardCapital","code":"The Bauhaus movement revolutionized design pedagogy by integrating fine arts with craft traditions while emphasizing functional aesthetics and industrial production methods that rejected ornamental historicism."},
+{"language":"hardCapital","code":"The Council of Trent systematized Catholic doctrine in response to Protestant challenges while standardizing liturgical practices and establishing seminaries to train clergy according to Tridentine principles."},
+{"language":"hardCapital","code":"The Marshall Plan reconstructed postwar Western Europe through conditional economic aid that simultaneously contained communist expansion while fostering economic interdependence that anticipated European integration."},
+{"language":"hardCapital","code":"The Scientific Revolution's paradigm shift from Aristotelian teleology to mechanistic materialism established experimental verification as the epistemological standard while challenging scholastic authority."},
+{"language":"hardNumber","code":"the cosmological constant measured as approximately 1.1056×10⁻⁵² m⁻² represents the energy density of vacuum space contributing to the accelerated expansion of the universe first observed in 1998 through type ia supernovae measurements at redshift z≈0.5."},
+{"language":"hardNumber","code":"quantum computing operates with qubits that can exist in superposition states α|0⟩+β|1⟩ where α²+β²=1 and decoherence times currently reach 100-200 microseconds in superconducting systems operating at 15 millikelvin with error rates around 0.1% per gate operation."},
+{"language":"hardNumber","code":"the human genome contains approximately 3.2 billion base pairs with only 1-2% coding for proteins while 45% consists of transposable elements and 8% retroviral origins with single nucleotide polymorphisms occurring every 100-300 bases in populations."},
+{"language":"hardNumber","code":"modern semiconductor fabrication achieves 5nm process nodes with over 170 million transistors per square millimeter using extreme ultraviolet lithography at 13.5nm wavelength with numerical aperture 0.33 requiring multilayer reflective optics with 0.1nm surface precision."},
+{"language":"hardNumber","code":"the large hadron collider accelerates protons to 6.5 tev per beam in its 27 kilometer circumference ring creating collisions at 13 tev center-of-mass energy with peak luminosity reaching 2×10³⁴ cm⁻²s⁻¹ producing petabytes of data annually."},
+{"language":"hardNumber","code":"global co₂ concentration reached 420 parts per million in 2023 increasing at 2.5ppm annually with anthropogenic emissions totaling 37 billion metric tons per year while natural sinks absorb approximately 55% of emissions through oceanic and terrestrial processes."},
+{"language":"hardNumber","code":"the human brain contains approximately 86 billion neurons forming 100 trillion synapses with signal propagation speeds ranging from 0.5-120 meters per second consuming 20 watts of power while representing only 2% of body mass."},
+{"language":"hardNumber","code":"the international space station orbits at 400 kilometers altitude completing 15.5 revolutions per day at 7.66 km/s with solar arrays spanning 2400 square meters generating 120 kilowatts of power in 90 minute day-night cycles."},
+{"language":"hardNumber","code":"the fastest supercomputer as of 2023 achieves 1.1 exaflops performance using 8.7 million amd cores consuming 21 megawatts with 37 petabytes memory and 700 petabyte storage capacity for complex climate and nuclear simulations."},
+{"language":"hardNumber","code":"the human eye can detect 1-10 photons under optimal conditions with rod cells sensitive to wavelengths 498nm and cones covering 420-530nm (s) 534-545nm (m) 564-580nm (l) enabling discrimination of 2-10 million colors."},
+{"language":"hardNumber","code":"the earth's magnetic field measures 25-65 microteslas at surface with the magnetopause located approximately 10 earth radii sunward deflecting solar wind at 400-700 km/s containing 1-10 particles per cubic centimeter."},
+{"language":"hardNumber","code":"the global internet transmits 150000 gigabytes per second with 5 billion users accessing 1.8 billion websites through 600000 kilometers of submarine cables carrying 99% of intercontinental data traffic."},
+{"language":"hardNumber","code":"mitochondrial dna mutation rates average 1×10⁻⁸ per site per generation enabling molecular clock estimates with 95% confidence intervals spanning 200000-300000 years for human mitochondrial eve."},
+{"language":"hardNumber","code":"the james webb space telescope detects infrared at 0.6-28.5μm wavelengths with sensitivity 10⁻²¹ w/m² using 6.5 meter beryllium mirror maintaining 25nm rms surface accuracy at 37k operating temperature."},
+{"language":"hardNumber","code":"modern lithium-ion batteries achieve 250-300 wh/kg energy density with 1000-2000 charge cycles at 1c rates while solid-state prototypes reach 500 wh/kg with ceramic electrolytes conducting 10⁻³ s/cm at room temperature."},
+{"language":"hardNumber","code":"the human microbiome contains 10¹⁴ bacterial cells with 1000-1500 predominant species encoding 3 million unique genes compared to 20000 in the human genome influencing 20% of host metabolites."},
+{"language":"hardNumber","code":"the hubble constant measures 73.3±1.04 km/s/mpc from cepheid variables while cmb observations yield 67.4±0.5 km/s/mpc reflecting the current tension in cosmology over universe expansion rates."},
+{"language":"hardNumber","code":"graphene exhibits exceptional properties including 130 gpa tensile strength 5000 w/mk thermal conductivity and 200000 cm²/vs electron mobility at room temperature with 97.7% optical transparency."},
+{"language":"hardNumber","code":"the global positioning system uses 31 satellites in 20200 km orbits transmitting l1 (1575.42 mhz) and l2 (1227.60 mhz) signals with 14.3 ns timing precision enabling <5 meter positional accuracy."},
+{"language":"hardNumber","code":"the human heart pumps 7000 liters daily through 100000 km of vessels with cardiomyocytes contracting 2.5 billion times in a 70-year lifespan at 60-100 bpm generating 1-5 watts of hydraulic power."},
+{"language":"hardSymbol","code":"the wavefunction collapse interpretation remains controversial; proponents argue it resolves measurement problems, while critics counter that it introduces unnecessary metaphysical baggage. decoherence theory suggests apparent collapse emerges from environmental entanglement—yet the ontological status of quantum states persists as unresolved."},
+{"language":"hardSymbol","code":"postmodern critique destabilizes grand narratives by exposing their contingent foundations; power/knowledge regimes construct truth-claims that naturalize particular worldviews. this epistemological skepticism challenges enlightenment rationality—privileging localized, situated knowledges over universalizing metanarratives."},
+{"language":"hardSymbol","code":"the dialectical method progresses through thesis-antithesis-synthesis; contradictions inherent in conceptual frameworks generate their own transcendence. this dynamic process—far from linear—incorporates negation and sublation, preserving while overcoming previous moments in the developmental trajectory."},
+{"language":"hardSymbol","code":"semiotic analysis reveals how signifiers float across cultural contexts; the signified remains perpetually deferred through chains of differential meaning. textual instability emerges when denotation collapses into connotation—exposing ideology's naturalized codes as constructed rather than essential."},
+{"language":"hardSymbol","code":"phenomenological reduction brackets natural attitudes to examine consciousness's intentional structures; noesis-noema correlations constitute lived experience. this epoché suspends metaphysical assumptions—revealing how phenomena give themselves to awareness prior to theoretical interpretation."},
+{"language":"hardSymbol","code":"the hermeneutic circle describes interpretation's iterative process; pre-understanding encounters texts, generating revised comprehension that recursively informs subsequent readings. this dialectic—between part and whole—continues indefinitely, precluding definitive textual closure."},
+{"language":"hardSymbol","code":"fourier transforms decompose functions into frequency components; temporal/spatial domains become reciprocal representations through integral transformations. convolution theorems demonstrate how systems respond to inputs—revealing transfer functions' spectral characteristics."},
+{"language":"hardSymbol","code":"game theory's nash equilibria occur when players' strategies become mutually optimal; deviation yields no unilateral advantage. prisoner's dilemmas illustrate how rational individual choices produce collectively suboptimal outcomes—highlighting cooperation's paradoxical rationality."},
+{"language":"hardSymbol","code":"chaos theory's sensitive dependence manifests when infinitesimal perturbations exponentially diverge; strange attractors confine trajectories within bounded yet unpredictable pathways. deterministic systems thus exhibit emergent complexity—defying reductionist prediction."},
+{"language":"hardSymbol","code":"deconstruction exposes textual aporias; binary oppositions collapse when privileged terms depend on their subjugated counterparts. this relentless undoing—far from destructive—reveals how meaning oscillates unstably between contested poles."},
+{"language":"hardSymbol","code":"the anthropic principle notes observers necessarily inhabit universe-regions compatible with life; weak versions describe selection effects, while strong versions invoke teleological causation. fine-tuning arguments emerge—yet multiverse theories offer alternative explanations."},
+{"language":"hardSymbol","code":"catastrophe theory models discontinuous transitions in dynamical systems; control parameters reach critical thresholds where smooth inputs produce abrupt qualitative changes. cusp catastrophes particularly describe bifurcation phenomena—from stock crashes to speciation events."},
+{"language":"hardSymbol","code":"the trolley problem's ethical dilemma forces choice between action/inaction; utilitarian calculus conflicts with deontological constraints. thought experiments proliferate—modifying scenarios to test moral intuitions' consistency across contexts."},
+{"language":"hardSymbol","code":"gödel's incompleteness theorems demonstrate formal systems' limitations; consistency cannot be proven within the system itself. this metamathematical result—applying to sufficiently powerful axiomatizations—undermines formalism's aspiration for complete certainty."},
+{"language":"hardSymbol","code":"the observer effect in quantum mechanics distinguishes measurement from observation; wavefunction collapse interpretations vary widely across formulations. von neumann chains describe measurement apparatus entanglement—yet the cut remains problematic."},
+{"language":"hardSymbol","code":"the sorites paradox challenges vague predicates; removing one grain never turns a heap into non-heap—yet eventually it does. this ancient puzzle exposes difficulties in defining boundaries for continuous qualitative changes."},
+{"language":"hardSymbol","code":"the ship of theseus paradox questions identity over time; gradual replacement of all components preserves form while replacing matter. contemporary versions extend to biological organisms—where constant molecular turnover occurs."},
+{"language":"hardSymbol","code":"the banach-tarski paradox demonstrates how infinite sets permit counterintuitive decompositions; one sphere can be split into two identical copies. this consequence of the axiom of choice challenges geometric intuition."},
+{"language":"hardSymbol","code":"the monty hall problem illustrates conditional probability's non-intuitive nature; switching doors doubles winning chances despite apparent symmetry. cognitive biases explain persistent disagreement—even among mathematicians."},
+{"language":"hardSymbol","code":"zeno's paradoxes challenge motion's possibility; infinite subdivisions seemingly prevent completion. modern solutions invoke calculus concepts—yet the underlying metaphysical questions about continuity persist."}
 ];
 
 async function insertSnippets() {

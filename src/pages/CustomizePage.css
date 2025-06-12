@@ -13,6 +13,102 @@
   margin-bottom: -50px; /* Adjusted to fit the navbar */
   /* overflow: hidden; */
 }
+/* Overlay with subtle blur and fade-in effect */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: overlay-fade-in 0.3s ease-out;
+}
+
+/* Main popup box with neumorphic feel */
+.popup-box {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: popup-in 0.3s ease;
+  transition: transform 0.2s;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px; /* Optional: ensures enough height for bottom alignment */
+}
+
+/* Popup content spacing */
+.popup-content {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Code snippet container */
+.popup-snippet {
+  background: #f0f2f5;
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+  margin: 0.75rem 0 1.25rem 0;
+  max-height: 160px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+}
+
+/* Button container */
+.popup-actions {
+  display: flex;
+  justify-content: center; /* Center the button(s) horizontally */
+  gap: 0.75rem;
+  margin-top: auto; /* Pushes the actions to the bottom of the popup */
+}
+
+/* Smooth scale-in effect */
+@keyframes popup-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Fade-in for overlay */
+@keyframes overlay-fade-in {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Optional: Style your buttons for consistency */
+.popup-actions button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.popup-actions button:hover {
+  background-color: #357abd;
+}
 
 .customize-container {
   max-width: 1100px;
