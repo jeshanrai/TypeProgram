@@ -1,0 +1,116 @@
+
+:root{
+    overflow: hidden;
+}
+.play-wrapper {
+  display: flex;
+  height: 84vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9fafb;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 280px;
+  background: #1f2937;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: width 0.3s ease;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.sidebar-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.user-card {
+  background: #374151;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.user-card:hover {
+  background: #4b5563;
+  transform: translateY(-2px);
+}
+
+.username {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.challenge-btn {
+  background: #10b981;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.challenge-btn:hover {
+  background: #059669;
+}
+
+.main-section {
+  flex-grow: 1;
+  position: relative;
+  padding: 40px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #4b5563;
+}
+
+.main-content {
+  text-align: center;
+}
+
+.main-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.main-content p {
+  font-size: 18px;
+  color: #6b7280;
+  margin-top: 8px;
+}

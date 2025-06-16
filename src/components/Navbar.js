@@ -30,6 +30,9 @@ export default function Navbar() {
           />
           <span className="slider round"></span>
         </label>
+        <div className="navbar-user">
+          <span className="user-name">Login</span>
+        </div>
       </div>
     </nav>
   );
