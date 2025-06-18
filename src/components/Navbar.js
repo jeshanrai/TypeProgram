@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.className = darkMode ? 'dark' : 'light';
@@ -10,17 +11,18 @@ export default function Navbar() {
 
   return (
     <nav className="navbar-container">
-     <div className="navbar-logo">
+      <div className="navbar-logo">
         <Link to="/">
           <img src="/images/logo.png" alt="TypeCode Logo" className="logo-img" />
           <span className="logo-text">TypeCode</span>
-          
         </Link>
       </div>
+
       <div className="navbar-center">
         <Link to="/customize">Customize</Link>
-        <Link to="/Play">Play</Link>
+        <Link to="/play">Play</Link>
       </div>
+
       <div className="navbar-right">
         <label className="switch">
           <input
@@ -30,8 +32,11 @@ export default function Navbar() {
           />
           <span className="slider round"></span>
         </label>
+
         <div className="navbar-user">
-          <span className="user-name">Login</span>
+          <button className="login-button" onClick={() => navigate('/login')}>
+            Login
+          </button>
         </div>
       </div>
     </nav>

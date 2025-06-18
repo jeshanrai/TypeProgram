@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Customize from './pages/Customize';
 import Play from './pages/Play';
+import AuthUI from './pages/AuthUI/AuthUI';
 
 function App() {
   const [language, setLanguage] = useState('text');
@@ -68,7 +69,8 @@ function App() {
           }
         />
         <Route path="/customize" element={<Customize />} />
-        <Route path="/Play" element={<Play />} />
+        <Route path="/play" element={<Play />} />
+        <Route path="/login" element={<AuthUI />} />
       </Routes>
     </>
   );
