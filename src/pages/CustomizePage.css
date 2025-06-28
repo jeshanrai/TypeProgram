@@ -419,5 +419,7 @@ textarea:focus, input:focus, select:focus {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
-
+.customize-container{
+  height: 77vh;
+}
 

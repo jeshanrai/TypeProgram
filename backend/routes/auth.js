@@ -4,7 +4,7 @@ const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = 'your_jwt_secret_key'; // Replace with your actual JWT secret key
+const JWT_SECRET = process.env.JWT_SECRET;
 const fetchuser = require('../middleware/fetchuser'); // Middleware to fetch user from JWT token
 
 // router to create a user
@@ -83,7 +83,16 @@ router.post(
         }
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.json({ success,authToken });
+   res.json({
+  success,
+  token: authToken,
+  user: {
+    _id: user._id,
+    fullName: user.fullName,
+    email: user.email
+  }
+});
+
       success = true;
     } catch (error) {
       console.error(error.message);
@@ -98,6 +107,17 @@ router.post('/getuser', fetchuser, async (req, res) => {
     const userId = req.user.id;
     const user = await User.findById(userId).select('-password');
     res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+router.get('/users', async (req, res) => {
+  console.log("✅ /users route hit");
+  try {
+    const users = await User.find({}, '_id fullName');
+    res.json(users);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Internal Server Error');
