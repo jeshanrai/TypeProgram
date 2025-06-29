@@ -1,5 +1,4 @@
 import './App.css';
-import LanguageBar from './components/Languagebar';
 import Navbar from './components/Navbar';
 import TypingArea from './components/TypingArea';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -8,7 +7,9 @@ import axios from 'axios';
 import Customize from './pages/Customize';
 import Play from './pages/Play';
 import AuthUI from './pages/AuthUI/AuthUI';
-
+import PlayArea from './pages/playcomponents/PlayArea';
+import ChallengePage from './components/Challangepopup/ChallengePage';
+import { io } from 'socket.io-client';
 function App() {
   const [language, setLanguage] = useState('text');
   const [snippet, setSnippet] = useState('Select a language to start typing.');
@@ -45,34 +46,37 @@ function App() {
   };
 
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-            
-              <TypingArea
-                snippet={snippet}
-                inputStarted={inputStarted}
-                setInputStarted={setInputStarted}
-                timeLeft={timeLeft}
-                setTimeLeft={setTimeLeft}
-                timeLimit={timeLimit}
-                setTimeLimit={setTimeLimit}
-                handleNext={handleNext}
-                language={language}
-                setLanguage={setLanguage}
-              />
-            </>
-          }
+ <>
+  <ChallengePage />
+
+  <Navbar />
+
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <TypingArea
+          snippet={snippet}
+          inputStarted={inputStarted}
+          setInputStarted={setInputStarted}
+          timeLeft={timeLeft}
+          setTimeLeft={setTimeLeft}
+          timeLimit={timeLimit}
+          setTimeLimit={setTimeLimit}
+          handleNext={handleNext}
+          language={language}
+          setLanguage={setLanguage}
         />
-        <Route path="/customize" element={<Customize />} />
-        <Route path="/play" element={<Play />} />
-        <Route path="/login" element={<AuthUI />} />
-      </Routes>
-    </>
+      }
+    />
+    <Route path="/customize" element={<Customize />} />
+    <Route path="/play" element={<Play />} />
+    <Route path="/play-room" element={<PlayArea />} /> {/* shown after challenge accepted */}
+    <Route path="/login" element={<AuthUI />} />
+  </Routes>
+</>
+
+
   );
 }
 

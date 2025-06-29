@@ -1,42 +1,56 @@
-import { useEffect, useRef } from 'react';
+// pages/playcomponents/PlayArea.js
+import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3001');
+const socket = io('http://localhost:3001'); // Adjust the URL as needed
 
-function PlayArea({ user }) {
-  const opponentRef = useRef(null);
+function PlayArea() {
+  const [snippet, setSnippet] = useState('');
+  const [input, setInput] = useState('');
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [gameStarted, setGameStarted] = useState(false);
 
   useEffect(() => {
-    socket.emit('register-user', user._id);
+    socket.emit('request-snippet'); // Ask server for a snippet
 
-    socket.on('receive-challenge', ({ from }) => {
-      const accept = window.confirm(`${from} challenged you. Accept?`);
-      if (accept) {
-        socket.emit('accept-challenge', { from, to: user._id });
-      }
-    });
-
-    socket.on('start-game', () => {
-      alert('Typing competition started!');
-      // start typing timer/snippet logic here
+    socket.on('send-snippet', (code) => {
+      setSnippet(code);
+      setGameStarted(true);
     });
 
     return () => {
-      socket.off('receive-challenge');
-      socket.off('start-game');
+      socket.off('send-snippet');
     };
-  }, [user]);
+  }, []);
 
-  const sendChallenge = (opponentId) => {
-    socket.emit('send-challenge', { from: user._id, to: opponentId });
-  };
+  useEffect(() => {
+    let interval;
+    if (gameStarted && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    } else if (timeLeft === 0) {
+      clearInterval(interval);
+      alert('Time is up!');
+      // Optionally emit "game-over" or show result screen
+    }
+    return () => clearInterval(interval);
+  }, [gameStarted, timeLeft]);
 
   return (
-    <div>
-      <h2>Welcome {user.fullName}</h2>
-      <button onClick={() => sendChallenge(opponentRef.current.value)}>Challenge</button>
-      <input ref={opponentRef} placeholder="Opponent user ID" />
+    <div style={{ padding: '2rem' }}>
+      <h2>Typing Challenge</h2>
+      <p><strong>Time Left:</strong> {timeLeft}s</p>
+      <pre style={{ background: '#f4f4f4', padding: '1rem' }}>{snippet}</pre>
+      <textarea
+        rows={6}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        style={{ width: '100%', marginTop: '1rem', fontSize: '1rem' }}
+        disabled={!gameStarted || timeLeft === 0}
+      />
     </div>
   );
 }
+
 export default PlayArea;

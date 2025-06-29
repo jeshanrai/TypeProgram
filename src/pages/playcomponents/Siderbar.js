@@ -2,43 +2,35 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import './Siderbar.css';
 
-const socket = io('http://localhost:3001'); // Adjust if your backend is on a different port
+const socket = io('http://localhost:3001');
 
 const Sidebar = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState('');
-  const [currentUserId, setCurrentUserId] = useState(null); // Assume you can get current user ID
+  const [currentUserId, setCurrentUserId] = useState(null);
 
   useEffect(() => {
-    // Fetch current user ID from session/localStorage/auth
-    const user = JSON.parse(localStorage.getItem('user')); // Assuming you store it here
+    const user = JSON.parse(localStorage.getItem('user'));
     setCurrentUserId(user?._id);
   }, []);
 
   useEffect(() => {
+    if (!currentUserId) return;
     fetch('http://localhost:3001/api/auth/users')
       .then(res => res.json())
-      .then(data => setUsers(data.filter(u => u._id !== currentUserId))) // exclude self
-      .catch(err => console.error('Error:', err));
-  }, [currentUserId]);
-
-  useEffect(() => {
-    socket.on('receive_challenge', ({ from }) => {
-      const accept = window.confirm(`${from} has challenged you. Accept?`);
-      socket.emit('challenge_response', { from, to: currentUserId, accepted: accept });
-    });
-
-    return () => {
-      socket.off('receive_challenge');
-    };
+      .then(data => {
+        // Filter out self
+        setUsers(data.filter(u => u._id !== currentUserId));
+      })
+      .catch(err => console.error('Error fetching users:', err));
   }, [currentUserId]);
 
   const sendChallenge = (targetUser) => {
-    socket.emit('send_challenge', {
+    socket.emit('send-challenge', {
       from: currentUserId,
-      to: targetUser._id,
-      fromName: users.find(u => u._id === currentUserId)?.fullName || "Someone"
+      to: targetUser._id
     });
+    console.log(`✅ Sent challenge from ${currentUserId} to ${targetUser._id}`);
   };
 
   const filteredUsers = users.filter(user =>
@@ -46,19 +38,19 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="sidebar">
+    <div className="sidebar-ct">
       <input
         type="text"
-        className="search-bar"
+        className="sidebar-search"
         placeholder="Search by name..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <div className="user-list">
+      <div className="sidebar-userlist">
         {filteredUsers.map(user => (
-          <div className="user-card" key={user._id}>
-            <span className="user-name">{user.fullName}</span>
-            <button className="challenge-button" onClick={() => sendChallenge(user)}>
+          <div className="sidebar-usercard" key={user._id}>
+            <span className="sidebar-username">{user.fullName}</span>
+            <button className="sidebar-challenge-btn" onClick={() => sendChallenge(user)}>
               Challenge
             </button>
           </div>
