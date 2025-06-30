@@ -114,3 +114,8 @@
   color: #6b7280;
   margin-top: 8px;
 }
+
+.playdiv{
+  display: flex;
+  flex-direction: row;
+}

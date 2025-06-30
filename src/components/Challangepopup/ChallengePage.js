@@ -6,6 +6,7 @@ const socket = io('http://localhost:3001');
 
 function ChallengePage() {
   const [challenger, setChallenger] = useState(null);
+  const [timer, setTimer] = useState(15); // Add timer state
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ function ChallengePage() {
     socket.on('receive-challenge', ({ from }) => {
       console.log("🎯 Received challenge from:", from);
       setChallenger(from);
+      setTimer(15); // Reset timer when new challenge arrives
     });
 
     socket.on('start-game', () => {
@@ -43,6 +45,19 @@ function ChallengePage() {
     };
   }, [navigate]);
 
+  // Timer effect
+  useEffect(() => {
+    if (!challenger) return;
+    if (timer === 0) {
+      handleDecline();
+      return;
+    }
+    const interval = setInterval(() => {
+      setTimer((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [challenger, timer]);
+
   const handleAccept = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     socket.emit('accept-challenge', {
@@ -51,11 +66,14 @@ function ChallengePage() {
     });
     console.log(`✅ Accepted challenge from ${challenger} as user ${user?._id}`);
     setChallenger(null);
+    setTimer(15);
   };
 
   const handleDecline = () => {
     console.log(`❌ Declined challenge from ${challenger}`);
     setChallenger(null);
+    setTimer(15);
+    navigate('/play'); // <-- Add this line
   };
 
   return (
@@ -65,6 +83,9 @@ function ChallengePage() {
           <div style={styles.modal}>
             <h2>🎯 Challenge Incoming</h2>
             <p>User <strong>{challenger}</strong> wants to challenge you!</p>
+            <p style={{ color: 'gray', marginBottom: '1rem' }}>
+              Respond in <strong>{timer}</strong> seconds...
+            </p>
             <div style={styles.buttons}>
               <button style={styles.accept} onClick={handleAccept}>Accept</button>
               <button style={styles.decline} onClick={handleDecline}>Decline</button>

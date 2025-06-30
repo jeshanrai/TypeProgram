@@ -1,56 +1,134 @@
-// pages/playcomponents/PlayArea.js
-import React, { useState, useEffect } from 'react';
-import { io } from 'socket.io-client';
+import React, { useState } from "react";
+import "./playarea.css";
+import { motion, AnimatePresence } from "framer-motion";
 
-const socket = io('http://localhost:3001'); // Adjust the URL as needed
-
-function PlayArea() {
-  const [snippet, setSnippet] = useState('');
-  const [input, setInput] = useState('');
-  const [timeLeft, setTimeLeft] = useState(30);
-  const [gameStarted, setGameStarted] = useState(false);
-
-  useEffect(() => {
-    socket.emit('request-snippet'); // Ask server for a snippet
-
-    socket.on('send-snippet', (code) => {
-      setSnippet(code);
-      setGameStarted(true);
-    });
-
-    return () => {
-      socket.off('send-snippet');
-    };
-  }, []);
-
-  useEffect(() => {
-    let interval;
-    if (gameStarted && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-    } else if (timeLeft === 0) {
-      clearInterval(interval);
-      alert('Time is up!');
-      // Optionally emit "game-over" or show result screen
-    }
-    return () => clearInterval(interval);
-  }, [gameStarted, timeLeft]);
+const PlayArea= () => {
+  const [activeTab, setActiveTab] = useState("text");
+  const [fontStyle, setFontStyle] = useState("Sans Serif"); // Add this line
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Typing Challenge</h2>
-      <p><strong>Time Left:</strong> {timeLeft}s</p>
-      <pre style={{ background: '#f4f4f4', padding: '1rem' }}>{snippet}</pre>
-      <textarea
-        rows={6}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        style={{ width: '100%', marginTop: '1rem', fontSize: '1rem' }}
-        disabled={!gameStarted || timeLeft === 0}
-      />
+    <div className="snippet-container">
+      <div className="snippet-content">
+        <div className="snippet-tab-buttons">
+          <button
+            className={`snippet-tab ${activeTab === "text" ? "active" : ""}`}
+            onClick={() => setActiveTab("text")}
+          >
+            Text
+          </button>
+          <button
+            className={`snippet-tab ${activeTab === "language" ? "active" : ""}`}
+            onClick={() => setActiveTab("language")}
+          >
+            Language
+          </button>
+        </div>
+
+        <AnimatePresence mode="wait">
+          {activeTab === "text" && (
+            <motion.div
+              key="text"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 30 }}
+              transition={{ duration: 0.3 }}
+              className="snippet-section"
+            >
+              <div className="default-customize">
+                <div className="default-text">
+                  <label>Default Text</label>
+                </div>
+                <div className="customize-button">
+                  <label>Customize</label>
+                </div>
+              </div>
+       
+
+              <div className="snippet-row">
+                <div className="snippet-col">
+                  <label>Character Limit</label>
+                  <input className="snippet-input" defaultValue="200" />
+                </div>
+                <div className="snippet-col">
+                  <label>Difficulty Level</label>
+                  <select className="snippet-dropdown">
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Font Style */}
+              <div className="customize-section">
+                <label>Font Style</label>
+                <select value={fontStyle} onChange={e => setFontStyle(e.target.value)}>
+                  <option>Sans Serif</option>
+                  <option>Serif</option>
+                  <option>Monospace</option>
+                  <option>Comic Sans MS</option>
+                  <option>Courier New</option>
+                  <option>Georgia</option>
+                  <option>Trebuchet MS</option>
+                  <option>Verdana</option>
+                  <option>Arial</option>
+                  <option>Lucida Console</option>
+                  <option>Impact</option>
+                </select>
+              </div>
+
+              <div className="snippet-col">
+                <label>Text Type</label>
+                <div className="snippet-type-buttons">
+                  <button className="snippet-type-btn active">Number</button>
+                  <button className="snippet-type-btn">Capital</button>
+                  <button className="snippet-type-btn">Symbol</button>
+                  <button className="snippet-type-btn">Mix</button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {activeTab === "language" && (
+            <motion.div
+              key="language"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -30 }}
+              transition={{ duration: 0.3 }}
+              className="snippet-section"
+            >
+              <div className="snippet-language-buttons">
+                <button className="snippet-lang-btn">JavaScript</button>
+                <button className="snippet-lang-btn">C++</button>
+                <button className="snippet-lang-btn">Java</button>
+                <button className="snippet-lang-btn">Python</button>
+                <button className="snippet-lang-btn">TypeScript</button>
+                <button className="snippet-lang-btn">CSS</button>
+                <button className="snippet-lang-btn">HTML</button>
+                <button className="snippet-lang-btn">Text</button>
+                <button className="snippet-lang-btn">C#</button>
+                <button className="snippet-lang-btn">C</button>
+                <button className="snippet-lang-btn">PHP</button>
+                <button className="snippet-lang-btn">Ruby</button>
+                <button className="snippet-lang-btn">Rust</button>
+                <button className="snippet-lang-btn">Kotlin</button>
+                <button className="snippet-lang-btn">Swift</button>
+                <button className="snippet-lang-btn">SQL</button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+     <button className="next-button">
+  <img src="/images/next.png" alt="Next" className="button-icon" />
+  <span className="button-text">Next</span>
+</button>
+ 
+
+        <div className="snippet-preview-box">Snippet preview</div>
+      </div>
     </div>
   );
-}
+};
 
 export default PlayArea;

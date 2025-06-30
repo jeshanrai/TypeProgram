@@ -30,13 +30,16 @@ app.use(express.json());
   // --- Socket.IO ---
   io.on('connection', socket => {
     console.log(`🟢 Socket connected: ${socket.id}`);
-
-    // Register user on connection
-    socket.on('register-user', (userId) => {
-      connectedUsers.set(userId, socket.id);
-      console.log(`User ${userId} registered with socket ${socket.id}`);
-    });
-
+ function emitOnlineUsers() {
+    const onlineUserIds = Array.from(connectedUsers.keys());
+    io.emit('online-users', onlineUserIds);
+  }
+  // Register user on connection
+  socket.on('register-user', (userId) => {
+    connectedUsers.set(userId, socket.id);
+    console.log(`User ${userId} registered with socket ${socket.id}`);
+    emitOnlineUsers(); // 👈 Update everyone
+  });
     // Handle challenge sent
     socket.on('send-challenge', ({ from, to }) => {
       const toSocketId = connectedUsers.get(to);
@@ -66,6 +69,7 @@ app.use(express.json());
           break;
         }
       }
+      emitOnlineUsers(); // 👈 Update everyone
     });
   });
 
