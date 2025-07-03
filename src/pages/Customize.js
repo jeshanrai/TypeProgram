@@ -74,7 +74,7 @@ const CustomizePage = () => {
 
   useEffect(() => {
     if (useDefault && defaultType !== 'Code Snippet') {
-      const langKey = getLanguageKey(difficulty, textType);
+      const langKey = getLanguageKey(difficulty, textType); // e.g., "easyNumber"
       console.log('Requesting snippet for language:', langKey);
       fetch('http://localhost:3001/api/snippet', {
         method: 'POST',
@@ -361,6 +361,7 @@ const calculateResults = () => {
   else if (defaultType === 'Code Snippet') defaultOptions = codeSamples;
   else if (defaultType === 'Random Words') defaultOptions = randomWords;
 
+  // Helper to build language key like "easyNumber"
   function getLanguageKey(difficulty, textType) {
     const type = textType.charAt(0).toUpperCase() + textType.slice(1).toLowerCase();
     return `${difficulty.toLowerCase()}${type}`;

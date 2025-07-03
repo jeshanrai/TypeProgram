@@ -11,6 +11,7 @@ import PlayArea from './pages/playcomponents/PlayArea';
 import ChallengePage from './components/Challangepopup/ChallengePage';
 import { io } from 'socket.io-client';
 function App() {
+  
   const [language, setLanguage] = useState('text');
   const [snippet, setSnippet] = useState('Select a language to start typing.');
   const [shownIds, setShownIds] = useState([]);
