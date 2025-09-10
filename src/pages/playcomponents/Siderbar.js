@@ -8,14 +8,15 @@ const Sidebar = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState('');
   const [currentUserId, setCurrentUserId] = useState(null);
-  
   const [onlineUserIds, setOnlineUserIds] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     setCurrentUserId(user?._id);
   }, []);
-    useEffect(() => {
+
+  useEffect(() => {
     if (!currentUserId) return;
 
     socket.emit('register-user', currentUserId);
@@ -34,13 +35,10 @@ const Sidebar = () => {
     fetch('http://localhost:3001/api/auth/users')
       .then(res => res.json())
       .then(data => {
-        
         setUsers(data.filter(u => u._id !== currentUserId));
       })
       .catch(err => console.error('Error fetching users:', err));
   }, [currentUserId]);
-
-  
 
   const sendChallenge = (targetUser) => {
     socket.emit('send-challenge', {
@@ -54,31 +52,51 @@ const Sidebar = () => {
     user.fullName.toLowerCase().includes(search.toLowerCase())
   );
 
-  return (
-    <div className="sidebar-ct">
-      <input
-        type="text"
-        className="sidebar-search"
-        placeholder="Search by name..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+return (
+  <div className="sidebar-wrapper">
+    {/* Floating toggle button (always visible) */}
+    {!isOpen && (
+      <button className="sidebar-floating-toggle" onClick={() => setIsOpen(true)}>
+        ☰
+      </button>
+    )}
+
+    {/* Sidebar */}
+    <div className={`sidebar-ct ${isOpen ? 'open' : ''}`}>
+      <div className="sidebar-header">
+        <input
+          type="text"
+          className="sidebar-search"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        {/* Close button */}
+        <button className="sidebar-toggle" onClick={() => setIsOpen(false)}>
+          ✖
+        </button>
+      </div>
+
       <div className="sidebar-userlist">
         {filteredUsers.map(user => (
           <div className="sidebar-usercard" key={user._id}>
-           <span className="sidebar-username">
-  {onlineUserIds.includes(user._id) && <span className="online-dot" />}
-  {user.fullName}
-</span>
-
-            <button className="sidebar-challenge-btn" onClick={() => sendChallenge(user)}>
-              Challenge
+            <span className="sidebar-username">
+              {onlineUserIds.includes(user._id) && <span className="online-dot" />}
+              {user.fullName.split(" ")[0]}
+            </span>
+            <button
+              className="sidebar-challenge-btn"
+              onClick={() => sendChallenge(user)}
+            >
+              ⚔
             </button>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
+};
 export default Sidebar;
+

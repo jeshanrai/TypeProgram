@@ -1,27 +1,42 @@
+/* Sidebar container */
+.sidebar-wrapper {
+  position: relative;
+}
+
+/* Sidebar */
 .sidebar-ct {
   width: 280px;
   height: 83vh;
   background: #bbd4f0;
   border-right: 1px solid #e2e8f0;
-  padding: 24px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-y: auto;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sidebar-ct:hover {
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Header row (search + close button) */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* Search box */
 .sidebar-search {
-  width: 100%;
-  padding: 12px 16px;
+  flex: 1;
+  padding: 10px 14px;
   border: 1px solid #cbd5e1;
   border-radius: 12px;
   font-size: 15px;
-  margin-bottom: 24px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -31,19 +46,53 @@
   outline: none;
 }
 
+/* Toggle button (close inside sidebar, hamburger outside) */
+.sidebar-toggle,
+.sidebar-floating-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Floating toggle button */
+.sidebar-floating-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 2000;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: block; /* visible by default */
+}
+
+/* Hide toggle on desktop/full screen */
+@media (min-width: 769px) {
+  .sidebar-floating-toggle {
+    display: none; /* occupies zero space */
+  }
+}
+
+
+/* User list */
 .sidebar-userlist {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .sidebar-usercard {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
   background: #ffffff;
-  padding: 14px 18px;
-  border-radius: 14px;
+  border-radius: 12px;
+  padding: 10px 14px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -53,34 +102,142 @@
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
 }
 
+/* Username + online dot */
 .sidebar-username {
-  font-size: 15.5px;
+  font-size: 15px;
   font-weight: 600;
   color: #334155;
+  position: relative;
 }
 
+.online-dot {
+  position: absolute;
+  left: -14px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: #4caf50;
+  border-radius: 50%;
+}
+
+/* Challenge button */
 .sidebar-challenge-btn {
-  background-color: #3b82f6;
+  background: #3b82f6;
   color: white;
   border: none;
   margin-top: -2px;
-  padding: 7px 16px;
-  font-size: 13.5px;
-  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .sidebar-challenge-btn:hover {
-  background-color: #2563eb;
+  background: #2563eb;
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
-.online-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-left: 8px;
-  background-color: #4caf50;
-  border-radius: 50%;
+
+/* Responsive (mobile sidebar hidden by default) */
+@media (max-width: 768px) {
+  .sidebar-ct {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 1000;
+  }
+  .sidebar-ct.open {
+    transform: translateX(0);
+  }
 }
 
+
+/* Header: search + toggle button */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar-search {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+/* Toggle button (hidden on desktop) */
+.sidebar-toggle {
+  background: rgb(35, 34, 34);
+  border: none;
+  font-size: 16px;
+  margin-top: -8px;
+  cursor: pointer;
+  display: none; /* hide by default */
+}
+
+/* Responsive: only show toggle on small screens */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .sidebar-ct {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 1000;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .sidebar-ct.open {
+    transform: translateX(0);
+  }
+}
+
+
+/* Default: desktop */
+.sidebar-ct {
+  width: 280px;
+  height: 83vh;
+  background: #bbd4f0;
+  border-right: 1px solid #e2e8f0;
+  padding: 24px 20px;
+  border-radius: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(0); /* always visible on desktop */
+}
+
+.sidebar-toggle {
+  display: none; /* hide toggle button on desktop */
+}
+
+/* Responsive: small screens */
+@media (max-width: 768px) {
+  .sidebar-ct {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%); /* hidden by default */
+    z-index: 1000;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .sidebar-ct.open {
+    transform: translateX(0); /* slide in when open */
+  }
+
+  /* Hamburger / close button visible only on mobile */
+  .sidebar-toggle {
+    display: block;
+  }
+}

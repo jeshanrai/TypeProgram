@@ -73,7 +73,7 @@ function App() {
     <Route path="/customize" element={<Customize />} />
     <Route path="/play" element={<Play />} />
     <Route path="/play-room" element={<PlayArea />} /> {/* shown after challenge accepted */}
-    <Route path="/login" element={<AuthUI />} />
+    <Route path="/auth" element={<AuthUI />} />
   </Routes>
 </>
 

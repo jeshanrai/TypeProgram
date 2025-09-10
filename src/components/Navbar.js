@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import AuthUI from '../pages/AuthUI/AuthUI';
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
@@ -31,7 +32,7 @@ export default function Navbar() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     setUser(null);
-    navigate('/login');
+    navigate('/auth');
 
     // Notify other components
     window.dispatchEvent(new Event('storageChanged'));
@@ -70,7 +71,7 @@ export default function Navbar() {
               Logout
             </button>
           ) : (
-            <button className="login-button" onClick={() => navigate('/login')}>
+            <button className="login-button" onClick={() => navigate('/auth')}>
               Login
             </button>
           )}

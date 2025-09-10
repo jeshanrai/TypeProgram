@@ -200,11 +200,11 @@
 .snippet-row {
   display: flex;
   gap: 16px;
-  margin-bottom: 20px;
 }
 
 .snippet-col {
   flex: 1;
+  margin-bottom: 25px;
 }
 
 .snippet-col label {

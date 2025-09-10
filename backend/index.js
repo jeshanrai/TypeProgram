@@ -149,29 +149,31 @@ app.use(express.json());
   });
 
   // Random snippet
-  app.post('/api/snippet', async (req, res) => {
-    const { language, excludeIds } = req.body;
-    try {
-      const snippetCollection = db.collection('snippets');
-      const query = {
-        language,
-        ...(excludeIds?.length && {
-          _id: { $nin: excludeIds.map(id => new ObjectId(id)) }
-        })
-      };
+app.post('/api/snippet', async (req, res) => {
+  const { language, excludeIds } = req.body;
+  try {
+    const snippetCollection = db.collection('snippets');
+    const query = {
+      language,
+      ...(excludeIds?.length && {
+        _id: { $nin: excludeIds.map(id => new ObjectId(id)) }
+      })
+    };
 
-      const count = await snippetCollection.countDocuments(query);
-      if (count === 0) return res.status(404).json({ message: 'No more snippets.' });
+    const count = await snippetCollection.countDocuments(query);
+    if (count === 0) return res.status(404).json({ message: 'No more snippets.' });
 
-      const random = Math.floor(Math.random() * count);
-      const snippet = await snippetCollection.find(query).skip(random).limit(1).toArray();
-      res.json(snippet[0]);
+    const random = Math.floor(Math.random() * count);
+    const snippet = await snippetCollection.find(query).skip(random).limit(1).toArray();
 
-    } catch (err) {
-      console.error('Snippet fetch error:', err);
-      res.status(500).json({ error: 'Failed to fetch snippet' });
-    }
-  });
+    res.json({ code: snippet[0].code });  // ✅ only send code
+
+  } catch (err) {
+    console.error('Snippet fetch error:', err);
+    res.status(500).json({ error: 'Failed to fetch snippet' });
+  }
+});
+
 
   // --- Start server ---
   server.listen(PORT, () =>
