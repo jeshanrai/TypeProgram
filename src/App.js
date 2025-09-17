@@ -10,6 +10,8 @@ import AuthUI from './pages/AuthUI/AuthUI';
 import PlayArea from './pages/playcomponents/PlayArea';
 import ChallengePage from './components/Challangepopup/ChallengePage';
 import { io } from 'socket.io-client';
+import TypingAreaPlay from './pages/TypingAreaPlay';
+
 function App() {
   
   const [language, setLanguage] = useState('text');
@@ -74,10 +76,21 @@ function App() {
     <Route path="/play" element={<Play />} />
     <Route path="/play-room" element={<PlayArea />} /> {/* shown after challenge accepted */}
     <Route path="/auth" element={<AuthUI />} />
-  </Routes>
-</>
-
-
+    <Route path="/challenge" element={<ChallengePage />} />
+        <Route
+          path="/typing"
+          element={
+            <TypingAreaPlay
+              finalSnippet="The quick brown fox jumps over the lazy dog."
+              timer={60}
+              fontStyle="monospace"
+              theme="light"
+              onExit={() => window.history.back()} // go back when exit
+            />
+          }
+        />
+      </Routes>
+    </>
   );
 }
 

@@ -62,37 +62,33 @@ const languageMap = {
   Swift: "swift",
   SQL: "sql",
 };
-
-const PlayArea = () => {
+const PlayArea = ({ snippetPreview, setSnippetPreview }) => {
   const [activeTab, setActiveTab] = useState("text"); // "text" or "language"
   const [fontStyle, setFontStyle] = useState("Sans Serif");
   const [selectedLanguage, setSelectedLanguage] = useState("Text");
   const [snippetIndex, setSnippetIndex] = useState(0);
 
   const [snippet, setSnippet] = useState(""); // Full snippet
-  const [snippetPreview, setSnippetPreview] = useState(""); // Sliced snippet
 
   const [customizeSelected, setCustomizeSelected] = useState(false); // initially Default Text
-const [difficulty, setDifficulty] = useState("Easy");
-const [textType, setTextType] = useState("Number");
-const [charLimit, setCharLimit] = useState(200);
+  const [difficulty, setDifficulty] = useState("Easy");
+  const [textType, setTextType] = useState("Number");
+  const [charLimit, setCharLimit] = useState(200);
 
-// Track first render to avoid auto-switch on mount
-const [mounted, setMounted] = useState(false);
+  // Track first render to avoid auto-switch on mount
+  const [mounted, setMounted] = useState(false);
 
-useEffect(() => {
-  if (mounted && !customizeSelected) {
-    setCustomizeSelected(true); // switch to Customize only after first change
-  } else {
-    setMounted(true); // after first render, mark as mounted
-  }
-}, [difficulty, textType, charLimit]);
+  useEffect(() => {
+    if (mounted && !customizeSelected) {
+      setCustomizeSelected(true);
+    } else {
+      setMounted(true);
+    }
+  }, [difficulty, textType, charLimit]);
 
-
-  // Fetch snippet whenever relevant dependencies change
+  // Fetch snippet whenever dependencies change
   useEffect(() => {
     let langKey = "text";
-
     if (activeTab === "language") {
       langKey = languageMap[selectedLanguage] || "text";
     } else if (customizeSelected) {
@@ -101,25 +97,37 @@ useEffect(() => {
 
     fetchSnippet(langKey).then((data) => {
       setSnippet(data);
-      setSnippetPreview(data.slice(0, charLimit));
+      if (activeTab === "language") {
+        setSnippetPreview(data); // update lifted state
+      } else {
+        setSnippetPreview(data.slice(0, charLimit)); // update lifted state
+      }
     });
-  }, [snippetIndex, selectedLanguage, customizeSelected, difficulty, textType, activeTab, charLimit]);
+  }, [
+    snippetIndex,
+    selectedLanguage,
+    customizeSelected,
+    difficulty,
+    textType,
+    activeTab,
+    charLimit,
+    setSnippetPreview, // ✅ important to include setter
+  ]);
 
-  // Slice snippet whenever charLimit changes
+  // Update preview on charLimit change
   useEffect(() => {
-    if (snippet) {
+    if (snippet && activeTab === "text") {
       setSnippetPreview(snippet.slice(0, charLimit));
     }
-  }, [charLimit, snippet]);
+  }, [charLimit, snippet, activeTab, setSnippetPreview]);
 
   // --- Handlers ---
   const handleNext = () => setSnippetIndex((prev) => prev + 1);
 
   const handleLanguageClick = (lang) => {
     setSelectedLanguage(lang);
-    setSnippetIndex(0); // Reset snippet index to fetch new snippet
+    setSnippetIndex(0);
   };
-
   return (
     <div className="snippet-container">
       <div className="snippet-content">
@@ -260,9 +268,10 @@ useEffect(() => {
         </button>
 
         {/* Snippet preview */}
-        <div className="snippet-preview-box" style={{ fontFamily: fontStyle }}>
-          {snippetPreview || "Loading..."}
-        </div>
+       <div className="snippet-preview-box" style={{ fontFamily: fontStyle }}>
+  {snippet || "Loading..."}
+</div>
+
       </div>
     </div>
   );

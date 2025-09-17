@@ -6,7 +6,7 @@ const socket = io('http://localhost:3001');
 
 function ChallengePage() {
   const [challenger, setChallenger] = useState(null);
-  const [timer, setTimer] = useState(15); // Add timer state
+  const [timer, setTimer] = useState(15);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,23 +19,19 @@ function ChallengePage() {
       }
     };
 
-    registerUser(); // Initial registration
+    registerUser();
 
-    socket.on('connect', () => {
-      console.log("🔄 Socket reconnected with ID:", socket.id);
-      registerUser(); // Re-register on reconnect
-    });
+    socket.on('connect', () => registerUser());
 
     socket.on('receive-challenge', ({ from }) => {
-      console.log("🎯 Received challenge from:", from);
       setChallenger(from);
-      setTimer(15); // Reset timer when new challenge arrives
+      setTimer(15);
     });
 
+    // ✅ Listen for start-game event (both sender and receiver)
     socket.on('start-game', () => {
-      console.log("🚀 Game starting... navigating to /play-room");
-      setChallenger(null);
-      navigate('/play-room');
+      setChallenger(null);   // close popup if open
+      navigate('/typing');    // go to TypingArea
     });
 
     return () => {
@@ -45,35 +41,30 @@ function ChallengePage() {
     };
   }, [navigate]);
 
-  // Timer effect
   useEffect(() => {
     if (!challenger) return;
     if (timer === 0) {
       handleDecline();
       return;
     }
-    const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
-    }, 1000);
+    const interval = setInterval(() => setTimer(prev => prev - 1), 1000);
     return () => clearInterval(interval);
   }, [challenger, timer]);
 
   const handleAccept = () => {
     const user = JSON.parse(localStorage.getItem('user'));
+    // Emit accept to server with sender and receiver info
     socket.emit('accept-challenge', {
       from: challenger,
       to: user?._id
     });
-    console.log(`✅ Accepted challenge from ${challenger} as user ${user?._id}`);
+    // Close popup immediately
     setChallenger(null);
-    setTimer(15);
   };
 
   const handleDecline = () => {
-    console.log(`❌ Declined challenge from ${challenger}`);
     setChallenger(null);
-    setTimer(15);
-    navigate('/play'); // <-- Add this line
+    navigate('/play');
   };
 
   return (

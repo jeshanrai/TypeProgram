@@ -49,16 +49,17 @@ app.use(express.json());
       }
     });
 
-    // Handle challenge accepted
-    socket.on('accept-challenge', ({ from, to }) => {
-      const fromSocketId = connectedUsers.get(from);
-      if (fromSocketId) {
-        io.to(fromSocketId).emit('challenge-accepted', { to });
-        io.to(fromSocketId).emit('start-game');
-        io.to(socket.id).emit('start-game');
-        console.log(`✅ Challenge accepted by ${to} for ${from}`);
-      }
-    });
+  socket.on("accept-challenge", ({ from, to, snippet }) => {
+  const fromSocketId = connectedUsers.get(from);
+  if (fromSocketId) {
+    // Send snippet to sender
+    io.to(fromSocketId).emit("start-game", { snippet });
+    // Send snippet to receiver
+    io.to(socket.id).emit("start-game", { snippet });
+    console.log(`✅ Challenge accepted by ${to} for ${from} with snippet`);
+  }
+});
+
 
     // Cleanup on disconnect
     socket.on('disconnect', () => {
