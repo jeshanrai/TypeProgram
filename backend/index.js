@@ -27,52 +27,68 @@ app.use(express.json());
   await connectDB();
   const db = getDB();
 
-  // --- Socket.IO ---
   io.on('connection', socket => {
-    console.log(`🟢 Socket connected: ${socket.id}`);
- function emitOnlineUsers() {
+  console.log(`🟢 Socket connected: ${socket.id}`);
+
+  function emitOnlineUsers() {
     const onlineUserIds = Array.from(connectedUsers.keys());
     io.emit('online-users', onlineUserIds);
   }
-  // Register user on connection
+
+  // Register user
   socket.on('register-user', (userId) => {
     connectedUsers.set(userId, socket.id);
     console.log(`User ${userId} registered with socket ${socket.id}`);
-    emitOnlineUsers(); // 👈 Update everyone
+    emitOnlineUsers();
   });
-    // Handle challenge sent
-    socket.on('send-challenge', ({ from, to }) => {
-      const toSocketId = connectedUsers.get(to);
-      if (toSocketId) {
-        io.to(toSocketId).emit('receive-challenge', { from });
-        console.log(`📨 Challenge sent from ${from} to ${to}`);
-      }
-    });
 
-  socket.on("accept-challenge", ({ from, to, snippet }) => {
-  const fromSocketId = connectedUsers.get(from);
-  if (fromSocketId) {
-    // Send snippet to sender
-    io.to(fromSocketId).emit("start-game", { snippet });
-    // Send snippet to receiver
-    io.to(socket.id).emit("start-game", { snippet });
-    console.log(`✅ Challenge accepted by ${to} for ${from} with snippet`);
-  }
+  // Send challenge
+  socket.on('send-challenge', ({ from, to }) => {
+    const toSocketId = connectedUsers.get(to);
+    if (toSocketId) {
+      io.to(toSocketId).emit('receive-challenge', { from });
+      console.log(`📨 Challenge sent from ${from} to ${to}`);
+    }
+  });
+
+  // Accept challenge → create room
+  socket.on('accept-challenge', ({ from, to, snippet }) => {
+    const fromSocketId = connectedUsers.get(from);
+    const toSocketId = connectedUsers.get(to);
+
+    if (fromSocketId && toSocketId) {
+      // Create unique roomId
+      const roomId = `game-${from}-${to}-${Date.now()}`;
+
+      // Join both players to the room
+      io.sockets.sockets.get(fromSocketId)?.join(roomId);
+      io.sockets.sockets.get(toSocketId)?.join(roomId);
+
+      // Notify both players
+      io.to(roomId).emit("start-game", { roomId, snippet, players: [from, to] });
+
+      console.log(`✅ Game started in room ${roomId} between ${from} and ${to}`);
+    }
+  });
+
+  // Example: handle typing progress (future-proofing)
+  socket.on("typing-progress", ({ roomId, userId, progress }) => {
+    socket.to(roomId).emit("opponent-progress", { userId, progress });
+  });
+
+  // Disconnect cleanup
+  socket.on('disconnect', () => {
+    for (let [userId, socketId] of connectedUsers) {
+      if (socketId === socket.id) {
+        connectedUsers.delete(userId);
+        console.log(`🔴 Disconnected: ${userId}`);
+        break;
+      }
+    }
+    emitOnlineUsers();
+  });
 });
 
-
-    // Cleanup on disconnect
-    socket.on('disconnect', () => {
-      for (let [userId, socketId] of connectedUsers) {
-        if (socketId === socket.id) {
-          connectedUsers.delete(userId);
-          console.log(`🔴 Disconnected: ${userId}`);
-          break;
-        }
-      }
-      emitOnlineUsers(); // 👈 Update everyone
-    });
-  });
 
   // --- Routes ---
 
