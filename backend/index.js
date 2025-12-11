@@ -11,8 +11,19 @@ const { connectDB, getDB } = require('./db');
 
 const app = express();
 const server = http.createServer(app);
+
+// CORS configuration for production and development
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'https://type-program.vercel.app'
+];
+
 const io = new Server(server, {
-  cors: { origin: '*' }
+  cors: {
+    origin: allowedOrigins,
+    credentials: true
+  }
 });
 
 const PORT = process.env.PORT || 3001;
@@ -20,7 +31,19 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your_default_jwt_secret';
 
 const connectedUsers = new Map();
 
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 (async () => {
@@ -28,66 +51,66 @@ app.use(express.json());
   const db = getDB();
 
   io.on('connection', socket => {
-  console.log(`🟢 Socket connected: ${socket.id}`);
+    console.log(`🟢 Socket connected: ${socket.id}`);
 
-  function emitOnlineUsers() {
-    const onlineUserIds = Array.from(connectedUsers.keys());
-    io.emit('online-users', onlineUserIds);
-  }
-
-  // Register user
-  socket.on('register-user', (userId) => {
-    connectedUsers.set(userId, socket.id);
-    console.log(`User ${userId} registered with socket ${socket.id}`);
-    emitOnlineUsers();
-  });
-
-  // Send challenge
-  socket.on('send-challenge', ({ from, to }) => {
-    const toSocketId = connectedUsers.get(to);
-    if (toSocketId) {
-      io.to(toSocketId).emit('receive-challenge', { from });
-      console.log(`📨 Challenge sent from ${from} to ${to}`);
+    function emitOnlineUsers() {
+      const onlineUserIds = Array.from(connectedUsers.keys());
+      io.emit('online-users', onlineUserIds);
     }
-  });
 
-  // Accept challenge → create room
-  socket.on('accept-challenge', ({ from, to, snippet }) => {
-    const fromSocketId = connectedUsers.get(from);
-    const toSocketId = connectedUsers.get(to);
+    // Register user
+    socket.on('register-user', (userId) => {
+      connectedUsers.set(userId, socket.id);
+      console.log(`User ${userId} registered with socket ${socket.id}`);
+      emitOnlineUsers();
+    });
 
-    if (fromSocketId && toSocketId) {
-      // Create unique roomId
-      const roomId = `game-${from}-${to}-${Date.now()}`;
-
-      // Join both players to the room
-      io.sockets.sockets.get(fromSocketId)?.join(roomId);
-      io.sockets.sockets.get(toSocketId)?.join(roomId);
-
-      // Notify both players
-      io.to(roomId).emit("start-game", { roomId, snippet, players: [from, to] });
-
-      console.log(`✅ Game started in room ${roomId} between ${from} and ${to}`);
-    }
-  });
-
-  // Example: handle typing progress (future-proofing)
-  socket.on("typing-progress", ({ roomId, userId, progress }) => {
-    socket.to(roomId).emit("opponent-progress", { userId, progress });
-  });
-
-  // Disconnect cleanup
-  socket.on('disconnect', () => {
-    for (let [userId, socketId] of connectedUsers) {
-      if (socketId === socket.id) {
-        connectedUsers.delete(userId);
-        console.log(`🔴 Disconnected: ${userId}`);
-        break;
+    // Send challenge
+    socket.on('send-challenge', ({ from, to }) => {
+      const toSocketId = connectedUsers.get(to);
+      if (toSocketId) {
+        io.to(toSocketId).emit('receive-challenge', { from });
+        console.log(`📨 Challenge sent from ${from} to ${to}`);
       }
-    }
-    emitOnlineUsers();
+    });
+
+    // Accept challenge → create room
+    socket.on('accept-challenge', ({ from, to, snippet }) => {
+      const fromSocketId = connectedUsers.get(from);
+      const toSocketId = connectedUsers.get(to);
+
+      if (fromSocketId && toSocketId) {
+        // Create unique roomId
+        const roomId = `game-${from}-${to}-${Date.now()}`;
+
+        // Join both players to the room
+        io.sockets.sockets.get(fromSocketId)?.join(roomId);
+        io.sockets.sockets.get(toSocketId)?.join(roomId);
+
+        // Notify both players
+        io.to(roomId).emit("start-game", { roomId, snippet, players: [from, to] });
+
+        console.log(`✅ Game started in room ${roomId} between ${from} and ${to}`);
+      }
+    });
+
+    // Example: handle typing progress (future-proofing)
+    socket.on("typing-progress", ({ roomId, userId, progress }) => {
+      socket.to(roomId).emit("opponent-progress", { userId, progress });
+    });
+
+    // Disconnect cleanup
+    socket.on('disconnect', () => {
+      for (let [userId, socketId] of connectedUsers) {
+        if (socketId === socket.id) {
+          connectedUsers.delete(userId);
+          console.log(`🔴 Disconnected: ${userId}`);
+          break;
+        }
+      }
+      emitOnlineUsers();
+    });
   });
-});
 
 
   // --- Routes ---
@@ -166,30 +189,30 @@ app.use(express.json());
   });
 
   // Random snippet
-app.post('/api/snippet', async (req, res) => {
-  const { language, excludeIds } = req.body;
-  try {
-    const snippetCollection = db.collection('snippets');
-    const query = {
-      language,
-      ...(excludeIds?.length && {
-        _id: { $nin: excludeIds.map(id => new ObjectId(id)) }
-      })
-    };
+  app.post('/api/snippet', async (req, res) => {
+    const { language, excludeIds } = req.body;
+    try {
+      const snippetCollection = db.collection('snippets');
+      const query = {
+        language,
+        ...(excludeIds?.length && {
+          _id: { $nin: excludeIds.map(id => new ObjectId(id)) }
+        })
+      };
 
-    const count = await snippetCollection.countDocuments(query);
-    if (count === 0) return res.status(404).json({ message: 'No more snippets.' });
+      const count = await snippetCollection.countDocuments(query);
+      if (count === 0) return res.status(404).json({ message: 'No more snippets.' });
 
-    const random = Math.floor(Math.random() * count);
-    const snippet = await snippetCollection.find(query).skip(random).limit(1).toArray();
+      const random = Math.floor(Math.random() * count);
+      const snippet = await snippetCollection.find(query).skip(random).limit(1).toArray();
 
-    res.json({ code: snippet[0].code });  // ✅ only send code
+      res.json({ code: snippet[0].code });  // ✅ only send code
 
-  } catch (err) {
-    console.error('Snippet fetch error:', err);
-    res.status(500).json({ error: 'Failed to fetch snippet' });
-  }
-});
+    } catch (err) {
+      console.error('Snippet fetch error:', err);
+      res.status(500).json({ error: 'Failed to fetch snippet' });
+    }
+  });
 
 
   // --- Start server ---
